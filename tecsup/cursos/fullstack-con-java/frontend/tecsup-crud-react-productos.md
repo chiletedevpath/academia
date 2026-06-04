@@ -6,7 +6,7 @@ Proyecto académico frontend para practicar CRUD de productos con React.
 
 ## Repositorio
 
-Pendiente de crear en GitHub: `tecsup-crud-react-productos`.
+Repositorio publicado: https://github.com/chiletedevpath/tecsup-crud-react-productos
 
 ## Estado
 

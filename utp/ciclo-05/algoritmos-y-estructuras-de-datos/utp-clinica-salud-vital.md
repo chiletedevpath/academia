@@ -6,7 +6,7 @@ Proyecto académico de UTP relacionado con gestión de pacientes, citas y horari
 
 ## Repositorio
 
-Pendiente de crear en GitHub: `utp-clinica-salud-vital`.
+Repositorio publicado: https://github.com/chiletedevpath/utp-clinica-salud-vital
 
 ## Estado
 
