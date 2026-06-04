@@ -6,7 +6,7 @@ Proyecto académico de UTP para practicar patrones de diseño con Java.
 
 ## Repositorio
 
-Pendiente de crear en GitHub: `utp-ferreteria-sys-patrones`.
+Repositorio publicado: https://github.com/chiletedevpath/utp-ferreteria-sys-patrones
 
 ## Estado
 

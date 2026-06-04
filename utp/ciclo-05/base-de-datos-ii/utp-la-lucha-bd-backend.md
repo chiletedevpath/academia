@@ -6,7 +6,7 @@ Proyecto académico de UTP para backend y base de datos del sistema La Lucha.
 
 ## Repositorio
 
-Pendiente de crear en GitHub: `utp-la-lucha-bd-backend`.
+Repositorio publicado: https://github.com/chiletedevpath/utp-la-lucha-bd-backend
 
 ## Estado
 

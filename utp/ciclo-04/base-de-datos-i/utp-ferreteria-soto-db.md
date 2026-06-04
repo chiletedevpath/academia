@@ -6,7 +6,7 @@ Proyecto académico de UTP para diseño y práctica de base de datos en el conte
 
 ## Repositorio
 
-Pendiente de crear en GitHub: `utp-ferreteria-soto-db`.
+Repositorio publicado: https://github.com/chiletedevpath/utp-ferreteria-soto-db
 
 ## Estado
 

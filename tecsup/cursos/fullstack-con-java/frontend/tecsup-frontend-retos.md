@@ -6,7 +6,7 @@ Repositorio agrupador para retos pequeños de frontend realizados en Tecsup.
 
 ## Repositorio
 
-Pendiente de crear en GitHub: `tecsup-frontend-retos`.
+Repositorio publicado: https://github.com/chiletedevpath/tecsup-frontend-retos
 
 ## Retos
 

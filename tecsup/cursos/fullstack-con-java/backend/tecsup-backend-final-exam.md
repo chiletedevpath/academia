@@ -6,7 +6,7 @@ Evaluación académica de backend compuesta por microservicios.
 
 ## Repositorio
 
-Pendiente de crear en GitHub: `tecsup-backend-final-exam`.
+Repositorio publicado: https://github.com/chiletedevpath/tecsup-backend-final-exam
 
 ## Servicios
 
