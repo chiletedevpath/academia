@@ -12,13 +12,13 @@ utp/
 
 ## Ciclo 04
 
-| Área | Proyecto | Repositorio |
+| Curso | Proyecto | Repositorio |
 |---|---|---|
 | Base de Datos I | Ferretería Soto DB | [utp-ferreteria-soto-db](https://github.com/chiletedevpath/utp-ferreteria-soto-db) |
 
 ## Ciclo 05
 
-| Área | Proyecto | Repositorio |
+| Curso | Proyecto | Repositorio |
 |---|---|---|
 | Base de Datos II | La Lucha BD Backend | [utp-la-lucha-bd-backend](https://github.com/chiletedevpath/utp-la-lucha-bd-backend) |
 | Algoritmos y Estructuras de Datos | Clínica Salud Vital | [utp-clinica-salud-vital](https://github.com/chiletedevpath/utp-clinica-salud-vital) |

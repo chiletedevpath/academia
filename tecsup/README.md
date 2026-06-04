@@ -14,7 +14,7 @@ tecsup/
 
 ## Fullstack con Java
 
-| Área | Proyecto | Repositorio |
+| Enfoque | Proyecto | Repositorio |
 |---|---|---|
 | Backend | SUNAT Consulta | [tecsup-sunat-consulta](https://github.com/chiletedevpath/tecsup-sunat-consulta) |
 | Backend | Backend Final Exam | [tecsup-backend-final-exam](https://github.com/chiletedevpath/tecsup-backend-final-exam) |

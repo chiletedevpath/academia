@@ -10,7 +10,7 @@ Este repositorio no busca guardar todo el código de los proyectos. Su función 
 academia/
 ├── utp/
 │   └── ciclo-XX/
-│       └── area-del-curso/
+│       └── nombre-del-curso/
 │           └── ficha-del-proyecto.md
 ├── tecsup/
 │   └── cursos/
@@ -24,21 +24,21 @@ academia/
 
 ### UTP
 
-| Ciclo | Área | Proyecto | Repositorio | Estado |
+| Ciclo | Curso | Proyecto | Repositorio | Estado |
 |---|---|---|---|---|
-| 04 | Base de Datos I | Ferretería Soto DB | [utp-ferreteria-soto-db](https://github.com/chiletedevpath/utp-ferreteria-soto-db) | Migrado |
-| 05 | Base de Datos II | La Lucha BD Backend | [utp-la-lucha-bd-backend](https://github.com/chiletedevpath/utp-la-lucha-bd-backend) | Migrado |
-| 05 | Algoritmos y Estructuras de Datos | Clínica Salud Vital | [utp-clinica-salud-vital](https://github.com/chiletedevpath/utp-clinica-salud-vital) | Migrado |
-| 05 | Patrones de Diseño | Ferretería Sys Patrones | [utp-ferreteria-sys-patrones](https://github.com/chiletedevpath/utp-ferreteria-sys-patrones) | Migrado |
+| 04 | Base de Datos I | Ferretería Soto DB | [utp-ferreteria-soto-db](https://github.com/chiletedevpath/utp-ferreteria-soto-db) | Publicado |
+| 05 | Base de Datos II | La Lucha BD Backend | [utp-la-lucha-bd-backend](https://github.com/chiletedevpath/utp-la-lucha-bd-backend) | Publicado |
+| 05 | Algoritmos y Estructuras de Datos | Clínica Salud Vital | [utp-clinica-salud-vital](https://github.com/chiletedevpath/utp-clinica-salud-vital) | Publicado |
+| 05 | Patrones de Diseño | Ferretería Sys Patrones | [utp-ferreteria-sys-patrones](https://github.com/chiletedevpath/utp-ferreteria-sys-patrones) | Publicado |
 
 ### Tecsup
 
-| Curso | Área | Proyecto | Repositorio | Estado |
+| Curso | Enfoque | Proyecto | Repositorio | Estado |
 |---|---|---|---|---|
-| Fullstack con Java | Backend | SUNAT Consulta | [tecsup-sunat-consulta](https://github.com/chiletedevpath/tecsup-sunat-consulta) | Migrado |
-| Fullstack con Java | Backend | Backend Final Exam | [tecsup-backend-final-exam](https://github.com/chiletedevpath/tecsup-backend-final-exam) | Migrado |
-| Fullstack con Java | Frontend | CRUD React Productos | [tecsup-crud-react-productos](https://github.com/chiletedevpath/tecsup-crud-react-productos) | Migrado |
-| Fullstack con Java | Frontend | Frontend Retos | [tecsup-frontend-retos](https://github.com/chiletedevpath/tecsup-frontend-retos) | Migrado |
+| Fullstack con Java | Backend | SUNAT Consulta | [tecsup-sunat-consulta](https://github.com/chiletedevpath/tecsup-sunat-consulta) | Publicado |
+| Fullstack con Java | Backend | Backend Final Exam | [tecsup-backend-final-exam](https://github.com/chiletedevpath/tecsup-backend-final-exam) | Publicado |
+| Fullstack con Java | Frontend | CRUD React Productos | [tecsup-crud-react-productos](https://github.com/chiletedevpath/tecsup-crud-react-productos) | Publicado |
+| Fullstack con Java | Frontend | Frontend Retos | [tecsup-frontend-retos](https://github.com/chiletedevpath/tecsup-frontend-retos) | Publicado |
 
 ## Estados usados
 
@@ -46,7 +46,7 @@ academia/
 |---|---|
 | Planificado | Existe la idea o el curso, pero aún no hay avance formal. |
 | En desarrollo | El proyecto sigue cambiando activamente. |
-| Migrado | Fue separado desde una estructura anterior y ya tiene repositorio propio. |
+| Publicado | El proyecto ya tiene repositorio propio visible en GitHub. |
 | En revisión | Necesita limpieza, pruebas, README final o evidencias. |
 | Cerrado | El proyecto quedó estable para consulta académica. |
 
@@ -73,7 +73,7 @@ Descripción corta del proyecto.
 
 - Institución:
 - Ciclo o curso:
-- Área:
+- Curso o enfoque:
 - Tipo:
 
 ## Repositorio
