@@ -50,7 +50,6 @@ academia/
 | Fullstack con Java | Backend | SUNAT Consulta | `tecsup/cursos/fullstack-con-java/proyectos/sunat-consulta` | Agrupado |
 | Fullstack con Java | Backend | Backend Final Exam | `tecsup/cursos/fullstack-con-java/proyectos/backend-final-exam` | Agrupado |
 | Fullstack con Java | Frontend | CRUD React Productos | `tecsup/cursos/fullstack-con-java/proyectos/crud-react-productos` | Agrupado |
-| Fullstack con Java | Frontend | Frontend Retos | `tecsup/cursos/fullstack-con-java/proyectos/frontend-retos` | Agrupado |
 
 ## Estados usados
 

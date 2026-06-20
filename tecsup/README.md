@@ -21,7 +21,6 @@ tecsup/
 | Backend | SUNAT Consulta | `cursos/fullstack-con-java/proyectos/sunat-consulta` |
 | Backend | Backend Final Exam | `cursos/fullstack-con-java/proyectos/backend-final-exam` |
 | Frontend | CRUD React Productos | `cursos/fullstack-con-java/proyectos/crud-react-productos` |
-| Frontend | Frontend Retos | `cursos/fullstack-con-java/proyectos/frontend-retos` |
 
 ## Mantenimiento
 

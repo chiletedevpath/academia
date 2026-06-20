@@ -9,8 +9,9 @@ Agrupa proyectos y practicas desarrolladas en el curso Fullstack con Java de Tec
 | [`backend-final-exam`](backend-final-exam/) | Backend, microservicios, Spring Boot | Entregado |
 | [`sunat-consulta`](sunat-consulta/) | Backend, API externa, Spring Boot | Entregado |
 | [`crud-react-productos`](crud-react-productos/) | Frontend, React, Vite | Entregado |
-| [`frontend-retos`](frontend-retos/) | HTML, CSS, JavaScript | Entregado |
 
 ## Nota
 
 Estos proyectos se conservan como evidencia academica/formativa dentro de `academia`. No deben presentarse como portafolio final ni como contenido oficial de Tecsup.
+
+Los retos pequenos de frontend se conservan en `aprendizaje/07-desarrollo-web/frontend-retos`, porque funcionan mejor como practica formativa que como proyecto academico agrupado.
