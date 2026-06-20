@@ -10,8 +10,7 @@ Las prácticas pequeñas o ejercicios de aprendizaje deben mantenerse en `aprend
 tecsup/
 └── cursos/
     └── fullstack-con-java/
-        ├── backend/
-        └── frontend/
+        └── proyectos/
 ```
 
 ## Fullstack con Java

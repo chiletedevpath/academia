@@ -112,11 +112,11 @@ En Git Bash o sistemas Unix:
 | Historial de consultas | Implementado |
 | Integracion con Decolecta | Implementada |
 | Persistencia H2 | Configurada |
-| Evidencias | Incluidas |
+| Evidencias Postman | Retiradas por seguridad de publicacion |
 | Ejemplos de request/response | Pendiente |
 | Validacion completa en entorno limpio | Pendiente |
 
-Las evidencias se conservan como material academico de entrega. Antes de publicar este proyecto en una web o repositorio remoto nuevo, deben revisarse capturas, colecciones y RUC usados para evitar exponer datos reales o dependencias de terceros sin contexto.
+Las evidencias visuales y colecciones Postman fueron retiradas del repositorio para evitar exponer datos reales, enlaces compartidos o informacion personal. Si se requieren evidencias en el futuro, deben generarse con datos ficticios y sin cuentas personales visibles.
 
 ## Aprendizajes aplicados
 
@@ -133,7 +133,7 @@ Las evidencias se conservan como material academico de entrega. Antes de publica
 - Documentar casos de error del proveedor.
 - Confirmar si se usara una base persistente en una version posterior.
 - Agregar instrucciones para configurar el token en Windows y Git Bash.
-- Revisar evidencias y RUC de ejemplo antes de cualquier publicacion web.
+- Crear evidencias nuevas solo con datos ficticios si el proyecto se usa como material publico.
 
 ## Relacion con Chilete DevPath
 
