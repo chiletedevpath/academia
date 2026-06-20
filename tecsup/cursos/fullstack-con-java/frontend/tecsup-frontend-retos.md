@@ -6,7 +6,7 @@ Repositorio agrupador para retos pequeños de frontend realizados en Tecsup.
 
 ## Repositorio
 
-Ubicacion actual: `proyectos/tecsup/fullstack-con-java/frontend-retos`
+Ubicacion actual: `tecsup/cursos/fullstack-con-java/proyectos/frontend-retos`
 
 ## Retos
 

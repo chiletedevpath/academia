@@ -6,7 +6,7 @@ Proyecto académico frontend para practicar CRUD de productos con React.
 
 ## Repositorio
 
-Ubicacion actual: `proyectos/tecsup/fullstack-con-java/crud-react-productos`
+Ubicacion actual: `tecsup/cursos/fullstack-con-java/proyectos/crud-react-productos`
 
 ## Estado
 

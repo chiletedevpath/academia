@@ -2,7 +2,7 @@
 
 Índice académico de Chilete DevPath.
 
-Este repositorio organiza proyectos académicos formales realizados en UTP, Tecsup y otros espacios de formación. No guarda el código de los proyectos: cada entrega, examen o proyecto se referencia desde aquí y puede vivir en un repositorio independiente o en el contenedor `proyectos`, según su relevancia actual.
+Este repositorio organiza proyectos académicos formales realizados en UTP, Tecsup y otros espacios de formación. Los proyectos con repositorio propio se referencian desde aquí; los trabajos académicos ya entregados que no requieren repositorio remoto independiente pueden conservarse dentro de la institución y curso correspondiente.
 
 Su función es servir como mapa de consulta para entender el contexto académico, la institución, el curso, el estado y el enlace oficial de cada proyecto.
 
@@ -11,8 +11,7 @@ Su función es servir como mapa de consulta para entender el contexto académico
 | Repositorio | Rol |
 |---|---|
 | `aprendizaje` | Ejercicios, laboratorios, fundamentos y práctica progresiva. |
-| `academia` | Índice de proyectos académicos formales publicados. |
-| `proyectos` | Trabajos completos agrupados que no requieren repositorio remoto propio. |
+| `academia` | Índice y contenedor de proyectos académicos formales. |
 | `portafolio` | Selección futura de proyectos destacados para presentación profesional. |
 
 En una web pública, esta sección debe mostrarse como **Proyectos académicos**.
@@ -48,10 +47,10 @@ academia/
 
 | Curso | Enfoque | Proyecto | Repositorio | Estado |
 |---|---|---|---|---|
-| Fullstack con Java | Backend | SUNAT Consulta | `proyectos/tecsup/fullstack-con-java/sunat-consulta` | Agrupado |
-| Fullstack con Java | Backend | Backend Final Exam | `proyectos/tecsup/fullstack-con-java/backend-final-exam` | Agrupado |
-| Fullstack con Java | Frontend | CRUD React Productos | `proyectos/tecsup/fullstack-con-java/crud-react-productos` | Agrupado |
-| Fullstack con Java | Frontend | Frontend Retos | `proyectos/tecsup/fullstack-con-java/frontend-retos` | Agrupado |
+| Fullstack con Java | Backend | SUNAT Consulta | `tecsup/cursos/fullstack-con-java/proyectos/sunat-consulta` | Agrupado |
+| Fullstack con Java | Backend | Backend Final Exam | `tecsup/cursos/fullstack-con-java/proyectos/backend-final-exam` | Agrupado |
+| Fullstack con Java | Frontend | CRUD React Productos | `tecsup/cursos/fullstack-con-java/proyectos/crud-react-productos` | Agrupado |
+| Fullstack con Java | Frontend | Frontend Retos | `tecsup/cursos/fullstack-con-java/proyectos/frontend-retos` | Agrupado |
 
 ## Estados usados
 
@@ -60,7 +59,7 @@ academia/
 | Planificado | Existe la idea o el curso, pero aún no hay avance formal. |
 | En desarrollo | El proyecto sigue cambiando activamente. |
 | Publicado | El proyecto ya tiene repositorio propio visible en GitHub. |
-| Agrupado | El proyecto se conserva dentro de `proyectos` y no requiere repositorio remoto propio. |
+| Agrupado | El proyecto se conserva dentro de `academia` y no requiere repositorio remoto propio. |
 | En revisión | Necesita limpieza, pruebas, README final o evidencias. |
 | Cerrado | El proyecto quedó estable para consulta académica. |
 
@@ -81,12 +80,12 @@ Antes de agregar o enlazar un proyecto académico, se debe revisar que el conten
 
 Cuando se agregue un nuevo proyecto académico:
 
-1. Crear o actualizar su repositorio independiente o ubicarlo dentro de `proyectos`, segun corresponda.
+1. Crear o actualizar su repositorio independiente o ubicarlo dentro de la institución y curso correspondiente.
 2. Crear una ficha dentro de la institución, ciclo o curso correspondiente.
 3. Agregar el proyecto al índice de este README.
 4. Mantener el estado actualizado.
-5. No copiar código completo dentro de `academia`.
-6. Si el contenido corresponde a ejercicios, clases o laboratorios, registrarlo en `aprendizaje`, no en `academia`.
+5. No copiar código completo dentro de `academia` salvo cuando se trate de proyectos académicos entregados que ya no requieren repositorio remoto independiente.
+6. Si el contenido corresponde a ejercicios, clases o laboratorios pequeños, registrarlo en `aprendizaje`, no en `academia`.
 
 ## Plantilla breve para nuevas fichas
 

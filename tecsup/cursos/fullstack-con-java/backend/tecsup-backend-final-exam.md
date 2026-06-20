@@ -6,7 +6,7 @@ Evaluación académica de backend compuesta por microservicios.
 
 ## Repositorio
 
-Ubicacion actual: `proyectos/tecsup/fullstack-con-java/backend-final-exam`
+Ubicacion actual: `tecsup/cursos/fullstack-con-java/proyectos/backend-final-exam`
 
 ## Servicios
 
