@@ -2,7 +2,7 @@
 
 Registro de proyectos académicos formales realizados en la Universidad Tecnológica del Perú.
 
-Esta sección no almacena ejercicios de clase. Solo organiza proyectos, entregas o trabajos académicos que tienen repositorio propio dentro del ecosistema Chilete DevPath.
+Esta sección no almacena ejercicios de clase. Organiza proyectos, entregas o trabajos académicos formales del ecosistema Chilete DevPath, ya sea como repositorios propios o como contenido agrupado dentro de `academia`.
 
 ## Organización
 
@@ -16,7 +16,7 @@ utp/
 
 | Curso | Proyecto | Repositorio |
 |---|---|---|
-| Base de Datos I | Ferretería Soto DB | [utp-ferreteria-soto-db](https://github.com/chiletedevpath/utp-ferreteria-soto-db) |
+| Base de Datos I | Ferretería Soto DB | `ciclo-04/base-de-datos-i/ferreteria-soto-db` |
 
 ## Ciclo 05
 

@@ -38,7 +38,7 @@ academia/
 
 | Ciclo | Curso | Proyecto | Repositorio | Estado |
 |---|---|---|---|---|
-| 04 | Base de Datos I | Ferretería Soto DB | [utp-ferreteria-soto-db](https://github.com/chiletedevpath/utp-ferreteria-soto-db) | Publicado |
+| 04 | Base de Datos I | Ferretería Soto DB | `utp/ciclo-04/base-de-datos-i/ferreteria-soto-db` | Agrupado |
 | 05 | Base de Datos II | La Lucha BD Backend | [utp-la-lucha-bd-backend](https://github.com/chiletedevpath/utp-la-lucha-bd-backend) | Publicado |
 | 05 | Algoritmos y Estructuras de Datos | Clínica Salud Vital | [utp-clinica-salud-vital](https://github.com/chiletedevpath/utp-clinica-salud-vital) | Publicado |
 | 05 | Patrones de Diseño | Ferretería Sys Patrones | [utp-ferreteria-sys-patrones](https://github.com/chiletedevpath/utp-ferreteria-sys-patrones) | Publicado |
