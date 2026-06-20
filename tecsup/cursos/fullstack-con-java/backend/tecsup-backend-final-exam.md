@@ -6,7 +6,7 @@ Evaluación académica de backend compuesta por microservicios.
 
 ## Repositorio
 
-Repositorio publicado: https://github.com/chiletedevpath/tecsup-backend-final-exam
+Ubicacion actual: `proyectos/tecsup/fullstack-con-java/backend-final-exam`
 
 ## Servicios
 
@@ -15,9 +15,10 @@ Repositorio publicado: https://github.com/chiletedevpath/tecsup-backend-final-ex
 
 ## Estado
 
-Publicado.
+Agrupado.
 
 ## Observaciones
 
-- Evaluación académica registrada como repositorio independiente.
-- El detalle técnico de cada microservicio debe mantenerse en el repositorio del proyecto.
+- Evaluación académica registrada como proyecto agrupado ya entregado.
+- No requiere repositorio remoto independiente.
+- El detalle técnico de cada microservicio debe mantenerse en la carpeta del proyecto.

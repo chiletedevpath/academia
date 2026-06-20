@@ -2,7 +2,7 @@
 
 Registro de proyectos, evaluaciones y entregas realizadas como parte de la formación complementaria en Tecsup.
 
-Las prácticas pequeñas o ejercicios de aprendizaje deben mantenerse en `aprendizaje`. Esta sección conserva solo referencias académicas con repositorio propio.
+Las prácticas pequeñas o ejercicios de aprendizaje deben mantenerse en `aprendizaje`. Esta sección conserva referencias académicas; los proyectos ya entregados de Tecsup se agrupan en `proyectos` porque no requieren repositorio remoto propio.
 
 ## Organización
 
@@ -18,10 +18,10 @@ tecsup/
 
 | Enfoque | Proyecto | Repositorio |
 |---|---|---|
-| Backend | SUNAT Consulta | [tecsup-sunat-consulta](https://github.com/chiletedevpath/tecsup-sunat-consulta) |
-| Backend | Backend Final Exam | [tecsup-backend-final-exam](https://github.com/chiletedevpath/tecsup-backend-final-exam) |
-| Frontend | CRUD React Productos | [tecsup-crud-react-productos](https://github.com/chiletedevpath/tecsup-crud-react-productos) |
-| Frontend | Frontend Retos | [tecsup-frontend-retos](https://github.com/chiletedevpath/tecsup-frontend-retos) |
+| Backend | SUNAT Consulta | `proyectos/tecsup/fullstack-con-java/sunat-consulta` |
+| Backend | Backend Final Exam | `proyectos/tecsup/fullstack-con-java/backend-final-exam` |
+| Frontend | CRUD React Productos | `proyectos/tecsup/fullstack-con-java/crud-react-productos` |
+| Frontend | Frontend Retos | `proyectos/tecsup/fullstack-con-java/frontend-retos` |
 
 ## Mantenimiento
 

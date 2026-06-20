@@ -6,7 +6,7 @@ Repositorio agrupador para retos pequeños de frontend realizados en Tecsup.
 
 ## Repositorio
 
-Repositorio publicado: https://github.com/chiletedevpath/tecsup-frontend-retos
+Ubicacion actual: `proyectos/tecsup/fullstack-con-java/frontend-retos`
 
 ## Retos
 
@@ -15,9 +15,10 @@ Repositorio publicado: https://github.com/chiletedevpath/tecsup-frontend-retos
 
 ## Estado
 
-Publicado.
+Agrupado.
 
 ## Observaciones
 
-- Repositorio agrupador de retos académicos frontend.
+- Proyecto agrupador de retos academicos frontend ya entregados.
+- No requiere repositorio remoto independiente.
 - Los retos pequeños deben seguir documentados dentro del repositorio correspondiente.

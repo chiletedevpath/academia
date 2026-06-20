@@ -6,13 +6,14 @@ Proyecto académico frontend para practicar CRUD de productos con React.
 
 ## Repositorio
 
-Repositorio publicado: https://github.com/chiletedevpath/tecsup-crud-react-productos
+Ubicacion actual: `proyectos/tecsup/fullstack-con-java/crud-react-productos`
 
 ## Estado
 
-Publicado.
+Agrupado.
 
 ## Observaciones
 
-- Proyecto registrado como práctica académica frontend.
-- La documentación técnica debe mantenerse en el repositorio del proyecto.
+- Proyecto registrado como practica academica frontend ya entregada.
+- No requiere repositorio remoto independiente.
+- La documentación técnica debe mantenerse en la carpeta del proyecto.

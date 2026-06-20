@@ -6,13 +6,14 @@ Proyecto académico de Tecsup para consultar datos de RUC mediante backend Java.
 
 ## Repositorio
 
-Repositorio publicado: https://github.com/chiletedevpath/tecsup-sunat-consulta
+Ubicacion actual: `proyectos/tecsup/fullstack-con-java/sunat-consulta`
 
 ## Estado
 
-Publicado.
+Agrupado.
 
 ## Observaciones
 
-- Proyecto registrado como práctica académica de backend.
+- Proyecto registrado como practica academica de backend ya entregada.
+- No requiere repositorio remoto independiente.
 - Las variables sensibles deben documentarse sin exponer tokens, claves ni credenciales reales.
