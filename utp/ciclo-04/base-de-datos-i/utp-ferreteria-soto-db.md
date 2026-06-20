@@ -10,10 +10,9 @@ Repositorio publicado: https://github.com/chiletedevpath/utp-ferreteria-soto-db
 
 ## Estado
 
-En migración hacia repositorio independiente.
+Publicado.
 
-## Pendiente
+## Observaciones
 
-- Confirmar ciclo académico.
-- Confirmar motor de base de datos.
-- Completar evidencias y pasos de ejecución.
+- Proyecto registrado como entrega académica de UTP.
+- El código y la documentación técnica deben mantenerse en el repositorio del proyecto.

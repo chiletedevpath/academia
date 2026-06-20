@@ -10,10 +10,9 @@ Repositorio publicado: https://github.com/chiletedevpath/tecsup-sunat-consulta
 
 ## Estado
 
-En migración hacia repositorio independiente.
+Publicado.
 
-## Pendiente
+## Observaciones
 
-- Confirmar curso exacto.
-- Documentar endpoints.
-- Documentar variable `DECOLECTA_TOKEN` sin exponer secretos.
+- Proyecto registrado como práctica académica de backend.
+- Las variables sensibles deben documentarse sin exponer tokens, claves ni credenciales reales.

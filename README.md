@@ -1,8 +1,20 @@
 # Academia
 
-Mapa académico de Chilete DevPath.
+Índice académico de Chilete DevPath.
 
-Este repositorio no busca guardar todo el código de los proyectos. Su función es organizar el recorrido académico, registrar contexto y enlazar los repositorios independientes donde vive cada proyecto.
+Este repositorio organiza proyectos académicos formales realizados en UTP, Tecsup y otros espacios de formación. No guarda el código de los proyectos: cada entrega, examen o proyecto publicado vive en su repositorio independiente.
+
+Su función es servir como mapa de consulta para entender el contexto académico, la institución, el curso, el estado y el enlace oficial de cada proyecto.
+
+## Rol dentro de Chilete DevPath
+
+| Repositorio | Rol |
+|---|---|
+| `aprendizaje` | Ejercicios, laboratorios, fundamentos y práctica progresiva. |
+| `academia` | Índice de proyectos académicos formales publicados. |
+| `portafolio` | Selección futura de proyectos destacados para presentación profesional. |
+
+En una web pública, esta sección debe mostrarse como **Proyectos académicos**.
 
 ## Criterio de organización
 
@@ -50,6 +62,8 @@ academia/
 | En revisión | Necesita limpieza, pruebas, README final o evidencias. |
 | Cerrado | El proyecto quedó estable para consulta académica. |
 
+Un proyecto publicado no significa necesariamente que sea parte del portafolio profesional. Solo indica que el repositorio existe, está visible y puede consultarse desde GitHub.
+
 ## Cómo actualizar este repositorio
 
 Cuando se agregue un nuevo proyecto académico:
@@ -58,7 +72,8 @@ Cuando se agregue un nuevo proyecto académico:
 2. Crear una ficha dentro de la institución, ciclo o curso correspondiente.
 3. Agregar el proyecto al índice de este README.
 4. Mantener el estado actualizado.
-5. No copiar código completo dentro de `academia`, salvo que sea una evidencia pequeña y justificada.
+5. No copiar código completo dentro de `academia`.
+6. Si el contenido corresponde a ejercicios, clases o laboratorios, registrarlo en `aprendizaje`, no en `academia`.
 
 ## Plantilla breve para nuevas fichas
 
@@ -84,10 +99,10 @@ Descripción corta del proyecto.
 
 Estado actual.
 
-## Pendiente
+## Observaciones
 
-- Punto pendiente 1.
-- Punto pendiente 2.
+- Contexto relevante.
+- Restricciones o notas de publicación.
 ```
 
 ## Nota de mantenimiento

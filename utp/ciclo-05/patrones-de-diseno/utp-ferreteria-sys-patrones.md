@@ -10,10 +10,9 @@ Repositorio publicado: https://github.com/chiletedevpath/utp-ferreteria-sys-patr
 
 ## Estado
 
-En migración hacia repositorio independiente.
+Publicado.
 
-## Pendiente
+## Observaciones
 
-- Confirmar ciclo académico.
-- Documentar patrones aplicados.
-- Agregar instrucciones de compilación y ejecución.
+- Proyecto registrado como entrega académica de UTP.
+- El detalle de patrones aplicados debe mantenerse en el repositorio del proyecto.

@@ -10,9 +10,9 @@ Repositorio publicado: https://github.com/chiletedevpath/tecsup-crud-react-produ
 
 ## Estado
 
-En migración hacia repositorio independiente.
+Publicado.
 
-## Pendiente
+## Observaciones
 
-- Confirmar curso exacto.
-- Reemplazar README base de Vite por documentación del proyecto.
+- Proyecto registrado como práctica académica frontend.
+- La documentación técnica debe mantenerse en el repositorio del proyecto.

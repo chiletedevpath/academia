@@ -1,6 +1,8 @@
 # UTP
 
-Registro de proyectos académicos realizados en la Universidad Tecnológica del Perú.
+Registro de proyectos académicos formales realizados en la Universidad Tecnológica del Perú.
+
+Esta sección no almacena ejercicios de clase. Solo organiza proyectos, entregas o trabajos académicos que tienen repositorio propio dentro del ecosistema Chilete DevPath.
 
 ## Organización
 

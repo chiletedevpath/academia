@@ -1,6 +1,8 @@
 # Tecsup
 
-Registro de cursos, prácticas y proyectos realizados como refuerzo académico en Tecsup.
+Registro de proyectos, evaluaciones y entregas realizadas como parte de la formación complementaria en Tecsup.
+
+Las prácticas pequeñas o ejercicios de aprendizaje deben mantenerse en `aprendizaje`. Esta sección conserva solo referencias académicas con repositorio propio.
 
 ## Organización
 

@@ -10,10 +10,9 @@ Repositorio publicado: https://github.com/chiletedevpath/utp-clinica-salud-vital
 
 ## Estado
 
-En migración hacia repositorio independiente.
+Publicado.
 
-## Pendiente
+## Observaciones
 
-- Confirmar ciclo académico.
-- Confirmar curso exacto.
-- Completar integrantes y evidencias.
+- Proyecto registrado como entrega académica de UTP.
+- El detalle técnico debe mantenerse en el README del repositorio del proyecto.

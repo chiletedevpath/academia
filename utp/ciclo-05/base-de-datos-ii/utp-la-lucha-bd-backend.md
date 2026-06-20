@@ -10,11 +10,9 @@ Repositorio publicado: https://github.com/chiletedevpath/utp-la-lucha-bd-backend
 
 ## Estado
 
-En migración hacia repositorio independiente.
+Publicado.
 
-## Pendiente
+## Observaciones
 
-- Confirmar ciclo académico.
-- Completar integrantes.
-- Completar instrucciones de ejecución local.
-- Revisar documentación final antes de publicar.
+- Proyecto registrado como entrega académica de UTP.
+- No se considera contenido prioritario para la web pública hasta completar la revisión de nombres, imágenes y material colaborativo.

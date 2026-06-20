@@ -15,4 +15,9 @@ Repositorio publicado: https://github.com/chiletedevpath/tecsup-frontend-retos
 
 ## Estado
 
-En migración hacia repositorio independiente.
+Publicado.
+
+## Observaciones
+
+- Repositorio agrupador de retos académicos frontend.
+- Los retos pequeños deben seguir documentados dentro del repositorio correspondiente.

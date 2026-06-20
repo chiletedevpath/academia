@@ -15,4 +15,9 @@ Repositorio publicado: https://github.com/chiletedevpath/tecsup-backend-final-ex
 
 ## Estado
 
-En migración hacia repositorio independiente.
+Publicado.
+
+## Observaciones
+
+- Evaluación académica registrada como repositorio independiente.
+- El detalle técnico de cada microservicio debe mantenerse en el repositorio del proyecto.
