@@ -64,6 +64,17 @@ academia/
 
 Un proyecto publicado no significa necesariamente que sea parte del portafolio profesional. Solo indica que el repositorio existe, está visible y puede consultarse desde GitHub.
 
+## Criterio de publicación segura
+
+Antes de agregar o enlazar un proyecto académico, se debe revisar que el contenido sea apto para publicación:
+
+- No subir materiales institucionales de terceros, como guías, diapositivas, rúbricas, PDFs o enunciados completos.
+- No usar logos, imágenes, capturas o marcas de instituciones sin autorización.
+- No publicar datos personales, credenciales, tokens, claves, correos privados ni información sensible.
+- No presentar como propio contenido desarrollado por compañeros, docentes o instituciones.
+- Referenciar fuentes externas cuando se usen como base de estudio o consulta.
+- Mantener fuera de la web pública los proyectos colaborativos que aún no tengan revisión de permisos, nombres, imágenes y participación.
+
 ## Cómo actualizar este repositorio
 
 Cuando se agregue un nuevo proyecto académico:
