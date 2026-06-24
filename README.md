@@ -39,7 +39,7 @@ academia/
 | Ciclo | Curso | Proyecto | Repositorio | Estado |
 |---|---|---|---|---|
 | 04 | Base de Datos I | Ferretería Soto DB | `utp/ciclo-04/base-de-datos-i/ferreteria-soto-db` | Agrupado |
-| 05 | Base de Datos II | La Lucha BD Backend | [utp-la-lucha-bd-backend](https://github.com/chiletedevpath/utp-la-lucha-bd-backend) | Repositorio publico en revision |
+| 05 | Base de Datos II | La Lucha BD Backend | `utp/ciclo-05/base-de-datos-ii/utp-la-lucha-bd-backend.md` | No publicable en web |
 | 05 | Algoritmos y Estructuras de Datos | Clinica Salud Vital | [utp-clinica-salud-vital](https://github.com/chiletedevpath/utp-clinica-salud-vital) | En proceso |
 | 05 | Patrones de Diseno | Ferreteria Sys Patrones | [utp-ferreteria-sys-patrones](https://github.com/chiletedevpath/utp-ferreteria-sys-patrones) | En proceso |
 
@@ -59,6 +59,7 @@ academia/
 | En desarrollo | El proyecto sigue cambiando activamente. |
 | Repositorio publico en revision | El proyecto tiene repositorio visible en GitHub, pero aun no debe destacarse en la web ni tratarse como portafolio final. |
 | Agrupado | El proyecto se conserva dentro de `academia` y no requiere repositorio remoto propio. |
+| No publicable en web | El proyecto se conserva solo como referencia academica interna por riesgo legal, de marca, autoria, datos sensibles o colaboracion. |
 | En revisión | Necesita limpieza, pruebas, README final o evidencias. |
 | Cerrado | El proyecto quedó estable para consulta académica. |
 

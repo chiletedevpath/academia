@@ -1,18 +1,23 @@
-# Clínica Salud Vital
+# Clinica Salud Vital
 
 ## Resumen
 
-Proyecto académico de UTP relacionado con gestión de pacientes, citas y horarios usando Java.
+Proyecto academico de UTP relacionado con gestion de pacientes, citas y horarios usando Java.
 
 ## Repositorio
 
-Repositorio publicado: https://github.com/chiletedevpath/utp-clinica-salud-vital
+Repositorio publico en revision: https://github.com/chiletedevpath/utp-clinica-salud-vital
 
 ## Estado
 
-Publicado.
+En proceso.
+
+## Decision para web
+
+No destacar por ahora.
 
 ## Observaciones
 
-- Proyecto registrado como entrega académica de UTP.
-- El detalle técnico debe mantenerse en el README del repositorio del proyecto.
+- Proyecto registrado como entrega academica de UTP.
+- Debe mantenerse sin documentos privados, datos personales reales ni evidencias sensibles.
+- Antes de pasar a la web requiere cierre tecnico, README final, portada propia y revision de publicacion segura.
