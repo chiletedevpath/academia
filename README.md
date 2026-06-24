@@ -39,9 +39,9 @@ academia/
 | Ciclo | Curso | Proyecto | Repositorio | Estado |
 |---|---|---|---|---|
 | 04 | Base de Datos I | Ferretería Soto DB | `utp/ciclo-04/base-de-datos-i/ferreteria-soto-db` | Agrupado |
-| 05 | Base de Datos II | La Lucha BD Backend | [utp-la-lucha-bd-backend](https://github.com/chiletedevpath/utp-la-lucha-bd-backend) | Publicado |
-| 05 | Algoritmos y Estructuras de Datos | Clínica Salud Vital | [utp-clinica-salud-vital](https://github.com/chiletedevpath/utp-clinica-salud-vital) | Publicado |
-| 05 | Patrones de Diseño | Ferretería Sys Patrones | [utp-ferreteria-sys-patrones](https://github.com/chiletedevpath/utp-ferreteria-sys-patrones) | Publicado |
+| 05 | Base de Datos II | La Lucha BD Backend | [utp-la-lucha-bd-backend](https://github.com/chiletedevpath/utp-la-lucha-bd-backend) | Repositorio publico en revision |
+| 05 | Algoritmos y Estructuras de Datos | Clinica Salud Vital | [utp-clinica-salud-vital](https://github.com/chiletedevpath/utp-clinica-salud-vital) | En proceso |
+| 05 | Patrones de Diseno | Ferreteria Sys Patrones | [utp-ferreteria-sys-patrones](https://github.com/chiletedevpath/utp-ferreteria-sys-patrones) | En proceso |
 
 ### Tecsup
 
@@ -57,12 +57,30 @@ academia/
 |---|---|
 | Planificado | Existe la idea o el curso, pero aún no hay avance formal. |
 | En desarrollo | El proyecto sigue cambiando activamente. |
-| Publicado | El proyecto ya tiene repositorio propio visible en GitHub. |
+| Repositorio publico en revision | El proyecto tiene repositorio visible en GitHub, pero aun no debe destacarse en la web ni tratarse como portafolio final. |
 | Agrupado | El proyecto se conserva dentro de `academia` y no requiere repositorio remoto propio. |
 | En revisión | Necesita limpieza, pruebas, README final o evidencias. |
 | Cerrado | El proyecto quedó estable para consulta académica. |
 
-Un proyecto publicado no significa necesariamente que sea parte del portafolio profesional. Solo indica que el repositorio existe, está visible y puede consultarse desde GitHub.
+Un repositorio publico en revision no significa que sea parte del portafolio profesional ni que este listo para la web. Solo indica que el repositorio existe, esta visible y debe mantenerse con contexto academico, datos ficticios y criterios de publicacion segura.
+
+## Imagen de presentacion por proyecto
+
+Todo proyecto que mas adelante pueda aparecer en la web debe contar con una imagen de presentacion propia, limpia y coherente con Chilete DevPath.
+
+Criterios:
+
+- No usar logos de UTP, Tecsup, empresas, docentes, companeros o marcas externas sin autorizacion.
+- No usar capturas con datos personales, rutas privadas, tokens, correos reales o informacion sensible.
+- Priorizar una portada conceptual: sistema, dominio tecnico, arquitectura, base de datos, interfaz o flujo de trabajo.
+- Mantener estilo profesional, educativo y alineado a la paleta visual de Chilete DevPath.
+- Guardar la imagen solo cuando este aprobada y con nombre descriptivo, por ejemplo `assets/portada-ferresys-patrones.png`.
+
+Prompt base sugerido:
+
+```txt
+Crear una imagen horizontal profesional para la portada de un proyecto academico de software llamado "[NOMBRE DEL PROYECTO]". Debe representar [DOMINIO DEL PROYECTO] con enfoque tecnico en [TECNOLOGIAS O CONCEPTOS]. Estilo moderno, limpio, educativo y serio, alineado a una marca de aprendizaje Full Stack llamada Chilete DevPath. Usar una paleta inspirada en azul profundo, verde tecnico y acento dorado suave. No incluir logos de universidades, empresas, marcas reales, personas, documentos, capturas de pantalla ni texto pequeno ilegible. Composicion tipo banner para GitHub y web, con espacio visual para titulo.
+```
 
 ## Criterio de publicación segura
 
