@@ -120,7 +120,7 @@ function App() {
 
   return (
     <main>
-      <h1>CRUD React Productos</h1>
+      <h1>Gestor de Catálogo de Productos</h1>
 
       <hr />
 

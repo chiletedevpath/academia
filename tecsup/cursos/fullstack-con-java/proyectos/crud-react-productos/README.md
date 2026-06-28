@@ -1,19 +1,21 @@
-# Tecsup CRUD React Productos
+# Gestor de Catálogo de Productos
 
-Frontend academico para gestionar productos desde una interfaz React conectada a una API backend.
+Frontend académico desarrollado en React para administrar un catálogo de productos desde una interfaz conectada a una API backend.
 
 ## Contexto academico
 
 - Institucion: Tecsup
 - Curso: Fullstack con Java
 - Enfoque: Frontend
-- Tipo: Proyecto academico o practica guiada
+- Tipo: Proyecto académico o práctica guiada
 
 ## Por que se hizo
 
-Este proyecto se desarrollo para practicar consumo de API REST desde React, manejo de estado, formularios controlados y operaciones CRUD en una interfaz web.
+Este proyecto se desarrolló para practicar consumo de API REST desde React, manejo de estado, formularios controlados y operaciones CRUD en una interfaz web.
 
-El frontend esta pensado para conectarse con un backend de productos que expone endpoints bajo `/productos`.
+El frontend está pensado como base para un sistema de catálogo e inventario: lista productos, permite registrar nuevos ítems, editar información y retirar registros cuando ya no correspondan.
+
+La API esperada expone endpoints bajo `/productos`.
 
 ## Tecnologias usadas
 
@@ -43,9 +45,9 @@ academia/tecsup/cursos/fullstack-con-java/proyectos/crud-react-productos/
 ## Funcionalidades principales
 
 - Listar productos desde una API.
-- Crear productos con formulario.
+- Registrar productos con formulario.
 - Editar productos existentes.
-- Eliminar productos con confirmacion.
+- Eliminar productos con confirmación.
 - Mostrar estados de carga y error.
 - Centralizar llamadas HTTP en `productService.js`.
 
@@ -100,9 +102,9 @@ npm run preview
 | Punto | Estado |
 |---|---|
 | Listado de productos | Implementado |
-| Creacion de productos | Implementada |
-| Edicion de productos | Implementada |
-| Eliminacion de productos | Implementada |
+| Registro de productos | Implementado |
+| Edición de productos | Implementada |
+| Eliminación de productos | Implementada |
 | Configuracion de API por entorno | Implementada |
 
 ## Aprendizajes aplicados
@@ -118,8 +120,10 @@ npm run preview
 
 - Mejorar validaciones del formulario.
 - Agregar mensajes visuales de exito y error.
-- Confirmar backend definitivo de productos.
-- Agregar capturas de pantalla cuando el proyecto este integrado.
+- Agregar validaciones por regla de negocio: precio mayor a cero, stock no negativo y nombre único.
+- Incorporar búsqueda y filtro por estado del producto.
+- Mejorar la experiencia visual para diferenciar carga, error, registro exitoso y edición activa.
+- Confirmar integración con el backend definitivo del catálogo.
 
 ## Relacion con Chilete DevPath
 
