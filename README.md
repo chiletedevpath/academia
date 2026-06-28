@@ -12,13 +12,13 @@ Este repositorio ayuda a entender qué construí, en qué curso nació cada proy
 | Clínica Salud Vital | Algoritmos y Estructuras de Datos | Java, POO, estructuras de datos y CSV | Terminado | [Ver proyecto](utp/ciclo-05/algoritmos-y-estructuras-de-datos/clinica-salud-vital) |
 | Ferretería Sys Patrones | Diseño de Patrones | Java, arquitectura, GRASP y patrones GOF | Terminado | [Ver proyecto](utp/ciclo-05/patrones-de-diseno/ferreteria-sys-patrones) |
 
-## Otros trabajos académicos
+## Proyectos Tecsup
 
 | Proyecto | Curso o programa | Estado | Acceso |
 |---|---|---|---|
-| SUNAT Consulta | Tecsup - Fullstack con Java | Agrupado | [Ver proyecto](tecsup/cursos/fullstack-con-java/proyectos/sunat-consulta) |
-| Backend Final Exam | Tecsup - Fullstack con Java | Agrupado | [Ver proyecto](tecsup/cursos/fullstack-con-java/proyectos/backend-final-exam) |
-| CRUD React Productos | Tecsup - Fullstack con Java | Agrupado | [Ver proyecto](tecsup/cursos/fullstack-con-java/proyectos/crud-react-productos) |
+| SUNAT Consulta | Tecsup - Fullstack con Java | Terminado | [Ver proyecto](tecsup/cursos/fullstack-con-java/proyectos/sunat-consulta) |
+| Backend Final Exam | Tecsup - Fullstack con Java | Terminado | [Ver proyecto](tecsup/cursos/fullstack-con-java/proyectos/backend-final-exam) |
+| CRUD React Productos | Tecsup - Fullstack con Java | Terminado | [Ver proyecto](tecsup/cursos/fullstack-con-java/proyectos/crud-react-productos) |
 
 ## Cómo leer este repositorio
 
