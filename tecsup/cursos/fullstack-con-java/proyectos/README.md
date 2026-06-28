@@ -1,17 +1,15 @@
 # Fullstack con Java
 
-Agrupa proyectos y practicas desarrolladas en el curso Fullstack con Java de Tecsup.
+Proyectos desarrollados en el curso Fullstack con Java de Tecsup.
 
-## Contenido
+## Proyectos
 
-| Carpeta | Enfoque | Estado |
-|---|---|---|
-| [`backend-final-exam`](backend-final-exam/) | Backend, microservicios, Spring Boot | Entregado |
-| [`sunat-consulta`](sunat-consulta/) | Backend, API externa, Spring Boot | Entregado |
-| [`crud-react-productos`](crud-react-productos/) | Frontend, React, Vite | Entregado |
+| Proyecto | Enfoque | Tecnologías | Acceso |
+|---|---|---|---|
+| Backend Final Exam | Backend y microservicios | Java, Spring Boot, PostgreSQL, Dockerfile | [Ver proyecto](backend-final-exam/) |
+| SUNAT Consulta | Backend e integración externa | Java, Spring Boot, OpenFeign, H2 | [Ver proyecto](sunat-consulta/) |
+| CRUD React Productos | Frontend web | React, Vite, JavaScript, Fetch API | [Ver proyecto](crud-react-productos/) |
 
-## Nota
+## Enfoque de aprendizaje
 
-Estos proyectos se conservan como evidencia academica/formativa dentro de `academia`. No deben presentarse como portafolio final ni como contenido oficial de Tecsup.
-
-Los retos pequenos de frontend se conservan en `aprendizaje/07-desarrollo-web/frontend-retos`, porque funcionan mejor como practica formativa que como proyecto academico agrupado.
+Estos proyectos conectan frontend, backend, persistencia y consumo de servicios. Funcionan como evidencia académica de práctica aplicada dentro del ecosistema Chilete DevPath.

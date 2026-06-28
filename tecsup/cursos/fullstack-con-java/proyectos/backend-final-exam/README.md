@@ -2,11 +2,6 @@
 
 Microservicios backend desarrollados como evaluacion del curso Fullstack con Java en Tecsup.
 
-## Autor
-
-- Chilete DevPath
-- Estudiante de Ingenieria de Sistemas e Informatica
-
 ## Contexto academico
 
 - Institucion: Tecsup
@@ -132,8 +127,6 @@ cd ms-pedidos
 | Microservicio pedidos | Implementado |
 | Persistencia PostgreSQL | Configurada por variables de entorno |
 | Dockerfile por servicio | Incluido |
-| Ejemplos de request/response | Pendiente |
-| Validacion completa en entorno limpio | Pendiente |
 
 ## Aprendizajes aplicados
 
@@ -144,7 +137,7 @@ cd ms-pedidos
 - Configuracion mediante variables de entorno.
 - Preparacion inicial para despliegue con Docker.
 
-## Pendientes
+## Mejoras futuras
 
 - Agregar ejemplos de request y response.
 - Documentar modelo de datos de productos y pedidos.
@@ -154,8 +147,4 @@ cd ms-pedidos
 
 ## Relacion con Chilete DevPath
 
-Este proyecto forma parte de la seccion academica de Chilete DevPath:
-
-- [academia](https://github.com/chiletedevpath/academia)
-- [aprendizaje](https://github.com/chiletedevpath/aprendizaje)
-- [chiletedevpath](https://github.com/chiletedevpath/chiletedevpath)
+Este proyecto forma parte de `academia` porque conserva evidencia de aprendizaje aplicada a backend, microservicios y Spring Boot.

@@ -2,11 +2,6 @@
 
 Backend academico para consultar informacion de RUC usando el servicio externo Decolecta.
 
-## Autor
-
-- Chilete DevPath
-- Estudiante de Ingenieria de Sistemas e Informatica
-
 ## Contexto academico
 
 - Institucion: Tecsup
@@ -112,11 +107,7 @@ En Git Bash o sistemas Unix:
 | Historial de consultas | Implementado |
 | Integracion con Decolecta | Implementada |
 | Persistencia H2 | Configurada |
-| Evidencias Postman | Retiradas por seguridad de publicacion |
-| Ejemplos de request/response | Pendiente |
-| Validacion completa en entorno limpio | Pendiente |
-
-Las evidencias visuales y colecciones Postman fueron retiradas del repositorio para evitar exponer datos reales, enlaces compartidos o informacion personal. Si se requieren evidencias en el futuro, deben generarse con datos ficticios y sin cuentas personales visibles.
+| Configuracion mediante token local | Implementada |
 
 ## Aprendizajes aplicados
 
@@ -127,18 +118,13 @@ Las evidencias visuales y colecciones Postman fueron retiradas del repositorio p
 - Manejo de errores de proveedor externo.
 - Uso de H2 para pruebas academicas rapidas.
 
-## Pendientes
+## Mejoras futuras
 
 - Agregar ejemplos de respuesta JSON.
 - Documentar casos de error del proveedor.
 - Confirmar si se usara una base persistente en una version posterior.
 - Agregar instrucciones para configurar el token en Windows y Git Bash.
-- Crear evidencias nuevas solo con datos ficticios si el proyecto se usa como material publico.
 
 ## Relacion con Chilete DevPath
 
-Este proyecto forma parte de la seccion academica de Chilete DevPath:
-
-- [academia](https://github.com/chiletedevpath/academia)
-- [aprendizaje](https://github.com/chiletedevpath/aprendizaje)
-- [chiletedevpath](https://github.com/chiletedevpath/chiletedevpath)
+Este proyecto forma parte de `academia` porque conserva evidencia de aprendizaje aplicada a backend, consumo de APIs externas y persistencia local.

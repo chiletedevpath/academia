@@ -2,11 +2,6 @@
 
 Frontend academico para gestionar productos desde una interfaz React conectada a una API backend.
 
-## Autor
-
-- Chilete DevPath
-- Estudiante de Ingenieria de Sistemas e Informatica
-
 ## Contexto academico
 
 - Institucion: Tecsup
@@ -109,8 +104,6 @@ npm run preview
 | Edicion de productos | Implementada |
 | Eliminacion de productos | Implementada |
 | Configuracion de API por entorno | Implementada |
-| Validacion visual avanzada | Pendiente |
-| Pruebas frontend | Pendiente |
 
 ## Aprendizajes aplicados
 
@@ -121,7 +114,7 @@ npm run preview
 - Separacion entre UI y servicio HTTP.
 - Uso de variables de entorno con Vite.
 
-## Pendientes
+## Mejoras futuras
 
 - Mejorar validaciones del formulario.
 - Agregar mensajes visuales de exito y error.
@@ -130,8 +123,4 @@ npm run preview
 
 ## Relacion con Chilete DevPath
 
-Este proyecto forma parte de la seccion academica de Chilete DevPath:
-
-- [academia](https://github.com/chiletedevpath/academia)
-- [aprendizaje](https://github.com/chiletedevpath/aprendizaje)
-- [chiletedevpath](https://github.com/chiletedevpath/chiletedevpath)
+Este proyecto forma parte de `academia` porque conserva evidencia de aprendizaje aplicada a React, consumo de API y organización de frontend.

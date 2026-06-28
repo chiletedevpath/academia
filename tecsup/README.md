@@ -1,26 +1,20 @@
-# Tecsup
+# Proyectos Tecsup
 
-Registro de proyectos, evaluaciones y entregas realizadas como parte de la formación complementaria en Tecsup.
-
-Las prácticas pequeñas o ejercicios de aprendizaje deben mantenerse en `aprendizaje`. Esta sección conserva referencias académicas y proyectos ya entregados de Tecsup que no requieren repositorio remoto propio.
-
-## Organización
-
-```txt
-tecsup/
-└── cursos/
-    └── fullstack-con-java/
-        └── proyectos/
-```
+Proyectos desarrollados como parte de mi formación complementaria en Tecsup, principalmente en la ruta **Fullstack con Java**.
 
 ## Fullstack con Java
 
-| Enfoque | Proyecto | Repositorio |
-|---|---|---|
-| Backend | SUNAT Consulta | `cursos/fullstack-con-java/proyectos/sunat-consulta` |
-| Backend | Backend Final Exam | `cursos/fullstack-con-java/proyectos/backend-final-exam` |
-| Frontend | CRUD React Productos | `cursos/fullstack-con-java/proyectos/crud-react-productos` |
+| Enfoque | Proyecto | Tecnologías | Acceso |
+|---|---|---|---|
+| Backend | SUNAT Consulta | Java, Spring Boot, OpenFeign, H2 | [Ver proyecto](cursos/fullstack-con-java/proyectos/sunat-consulta) |
+| Backend | Backend Final Exam | Java, Spring Boot, PostgreSQL, microservicios | [Ver proyecto](cursos/fullstack-con-java/proyectos/backend-final-exam) |
+| Frontend | CRUD React Productos | React, Vite, JavaScript, Fetch API | [Ver proyecto](cursos/fullstack-con-java/proyectos/crud-react-productos) |
 
-## Mantenimiento
+## Qué muestra esta sección
 
-Si aparece un nuevo curso de Tecsup, debe registrarse como carpeta independiente dentro de `cursos/` y agregarse al README principal de `academia`.
+- Práctica backend con Spring Boot.
+- Consumo de APIs externas.
+- Persistencia con JPA y bases de datos.
+- Frontend con React y consumo de servicios REST.
+
+Estos proyectos complementan la ruta principal de aprendizaje y ayudan a mostrar evolución técnica desde ejercicios hacia entregas más completas.
