@@ -1,125 +1,86 @@
-# UTP Ferreteria Soto DB
+# Ferretería Soto DB
 
-Proyecto academico de base de datos para modelar usuarios, clientes, productos, inventario, ventas, auditoria y politicas de precios de una ferreteria.
+Proyecto académico de **Base de Datos I** orientado a modelar la información principal de una ferretería: usuarios, clientes, productos, inventario, ventas, auditoría y políticas de precios.
 
-## Autor
+## Contexto académico
 
-- Chilete DevPath
-- Estudiante de Ingenieria de Sistemas e Informatica
-
-## Contexto academico
-
-- Institucion: UTP
-- Ciclo: 04
-- Curso: Base de Datos I
-- Tipo: Proyecto academico
-
-## Aviso de publicacion
-
-Este repositorio se publica como evidencia academica y de aprendizaje dentro de Chilete DevPath. No representa una publicacion oficial de UTP ni una solucion productiva de una empresa real.
-
-Los usuarios, correos, claves y datos usados en los scripts son ficticios o de demostracion. No deben reemplazar controles de seguridad, validaciones oficiales ni procesos reales de una organizacion.
-
-## Por que se hizo
-
-Este proyecto se desarrollo para aplicar modelado relacional, normalizacion, restricciones, procedimientos almacenados, triggers, auditoria y manejo de inventario dentro de un caso de negocio.
-
-El caso trabajado representa una ferreteria con usuarios, clientes, catalogos de productos, ventas, detalle de ventas y politicas de precios.
-
-## Tecnologia usada
-
-- SQL Server
-- T-SQL
-- Procedimientos almacenados
-- Triggers
-- Indices
-- Restricciones de integridad
-- Auditoria de datos
-
-## Que contiene el repositorio
-
-```txt
-ferreteria-soto-db/
-|-- 00-create-database.sql
-|-- 01-usuarios.sql
-|-- 02-clientes.sql
-|-- 03-clasificacion-productos.sql
-|-- 04-productos.sql
-|-- 05-ventas-detalle-auditoria.sql
-|-- 06-politicas-precios.sql
-|-- codigo-fuente-bd-ferreteria-soto.sql
-|-- reset-inventario-ventas.sql
-|-- .gitignore
-`-- README.md
-```
-
-## Modulos principales
-
-| Script | Modulo |
+| Dato | Detalle |
 |---|---|
-| `00-create-database.sql` | Creacion de base de datos |
-| `01-usuarios.sql` | Usuarios, roles, estados y auditoria |
-| `02-clientes.sql` | Clientes persona y empresa |
-| `03-clasificacion-productos.sql` | Familias, grupos, marcas, unidades y lineas |
-| `04-productos.sql` | Inventario con PEPS/FIFO |
-| `05-ventas-detalle-auditoria.sql` | Ventas, detalle y auditoria |
-| `06-politicas-precios.sql` | Politicas de precios |
-| `reset-inventario-ventas.sql` | Limpieza de inventario y ventas para desarrollo |
+| Institución | UTP |
+| Curso | Base de Datos I |
+| Ciclo | 04 |
+| Tipo | Proyecto académico |
+| Motor | SQL Server |
+| Lenguaje | T-SQL |
 
-## Ejecucion sugerida
+## Objetivo
 
-Ejecutar en SQL Server Management Studio o Azure Data Studio, respetando el orden numerico de los scripts:
+Construir una base de datos relacional que permita representar operaciones básicas de una ferretería y aplicar conceptos de modelado, integridad, consultas, procedimientos almacenados, triggers e inventario.
+
+## Qué contiene
+
+| Archivo | Propósito |
+|---|---|
+| `00-create-database.sql` | Crea la base de datos del proyecto. |
+| `01-usuarios.sql` | Define usuarios, roles, estados y auditoría. |
+| `02-clientes.sql` | Modela clientes persona y empresa. |
+| `03-clasificacion-productos.sql` | Organiza familias, grupos, marcas, unidades y líneas. |
+| `04-productos.sql` | Gestiona productos e inventario con criterio PEPS/FIFO. |
+| `05-ventas-detalle-auditoria.sql` | Registra ventas, detalles y auditoría. |
+| `06-politicas-precios.sql` | Define reglas de precios aplicadas al dominio. |
+| `codigo-fuente-bd-ferreteria-soto.sql` | Script consolidado del proyecto. |
+| `reset-inventario-ventas.sql` | Reinicia datos de inventario y ventas para pruebas. |
+
+## Tecnologías y conceptos
+
+- SQL Server.
+- T-SQL.
+- Modelo relacional.
+- Restricciones de integridad.
+- Procedimientos almacenados.
+- Triggers.
+- Índices.
+- Auditoría de datos.
+- Inventario con criterio PEPS/FIFO.
+
+## Ejecución sugerida
+
+Abrir los scripts en SQL Server Management Studio o Azure Data Studio y ejecutarlos en orden:
 
 ```txt
 00 -> 01 -> 02 -> 03 -> 04 -> 05 -> 06
 ```
 
-Tambien existe un archivo consolidado:
+También se puede revisar el archivo consolidado:
 
 ```txt
 codigo-fuente-bd-ferreteria-soto.sql
 ```
 
-## Advertencia
-
-`reset-inventario-ventas.sql` esta pensado para ambiente de desarrollo. No debe ejecutarse en una base de datos productiva.
-
-Las credenciales incluidas en los scripts son ejemplos para pruebas locales. Deben cambiarse antes de cualquier uso fuera de un entorno academico o de demostracion.
-
 ## Estado del proyecto
+
+Proyecto terminado como entrega académica.
 
 | Punto | Estado |
 |---|---|
-| Creacion de base de datos | Implementada |
-| Usuarios y auditoria | Implementado |
+| Creación de base de datos | Implementado |
+| Usuarios y auditoría | Implementado |
 | Clientes | Implementado |
-| Catalogos de productos | Implementado |
+| Catálogos de productos | Implementado |
 | Inventario PEPS/FIFO | Implementado |
 | Ventas y detalle | Implementado |
-| Politicas de precios | Implementado |
-| Diagrama entidad-relacion | Pendiente |
-| Evidencias de consultas | Pendiente |
+| Políticas de precios | Implementado |
+| Script consolidado | Implementado |
 
 ## Aprendizajes aplicados
 
-- Modelado de base de datos relacional.
-- Separacion de scripts por modulo.
-- Uso de restricciones e indices.
-- Uso de triggers para auditoria.
-- Uso de procedimientos almacenados.
-- Manejo de inventario con criterio PEPS/FIFO.
+- Separar una base de datos por módulos.
+- Modelar entidades y relaciones de un caso de negocio.
+- Aplicar restricciones para proteger consistencia.
+- Usar triggers para registrar cambios relevantes.
+- Crear procedimientos almacenados para operaciones controladas.
+- Pensar el inventario como una regla de negocio, no solo como una tabla.
 
-## Pendientes
+## Relación con Chilete DevPath
 
-- Agregar diagrama entidad-relacion.
-- Documentar consultas principales.
-- Agregar capturas de ejecucion si el curso lo solicita.
-- Confirmar version de SQL Server usada.
-
-## Relacion con Chilete DevPath
-
-Este proyecto forma parte del registro academico de Chilete DevPath:
-
-- [academia](https://github.com/chiletedevpath/academia)
-- [aprendizaje](https://github.com/chiletedevpath/aprendizaje)
-- [chiletedevpath](https://github.com/chiletedevpath/chiletedevpath)
+Este proyecto forma parte de `academia` porque conserva evidencia de aprendizaje aplicada a bases de datos. En la web aparece como proyecto académico terminado.

@@ -4,14 +4,6 @@ Sistema academico en Java para simular la gestion basica de una clinica y demost
 
 El proyecto corresponde al curso **Algoritmos y Estructuras de Datos** de la Universidad Tecnologica del Peru. Esta desarrollado como una aplicacion por consola orientada a sustentacion academica.
 
-## Aviso de publicacion
-
-Este repositorio documenta una practica academica desarrollada por Adrian Pisco como parte de su proceso formativo. No representa una publicacion oficial de la Universidad Tecnologica del Peru ni de una institucion de salud.
-
-Los datos usados en el sistema son ficticios y se mantienen solo para demostrar estructuras de datos, algoritmos y Programacion Orientada a Objetos. No deben interpretarse como informacion clinica real.
-
-Este proyecto se conserva dentro de `academia` como evidencia académica terminada de Chilete DevPath. No debe tratarse como sistema clínico real ni como portafolio profesional final.
-
 ## Contexto academico
 
 | Dato | Detalle |
@@ -175,13 +167,11 @@ Durante la ejecucion deben poder observarse:
 | Exportacion CSV | Implementado |
 | Validacion manual por menu | Implementado |
 
-## Fuera de alcance
+## Alcance técnico
 
-Este proyecto no incluye base de datos, interfaz grafica, autenticacion de usuarios ni persistencia completa con lectura desde archivos. La informacion trabaja principalmente en memoria y la exportacion CSV se usa como evidencia academica.
+Este proyecto trabaja principalmente en memoria y usa exportación CSV como evidencia académica. No incluye base de datos, interfaz gráfica, autenticación de usuarios ni lectura completa desde archivos.
 
-No debe usarse para registrar, procesar o almacenar informacion real de pacientes, doctores, pagos o atenciones medicas.
-
-## Mejoras futuras
+## Posibles mejoras futuras
 
 - Agregar pruebas automatizadas si el alcance del curso lo permite.
 - Permitir carga de datos desde archivos CSV.
@@ -189,8 +179,4 @@ No debe usarse para registrar, procesar o almacenar informacion real de paciente
 
 ## Relacion con Chilete DevPath
 
-Este proyecto forma parte del ecosistema académico de **Chilete DevPath**. Su propósito es conservar evidencia técnica de aprendizaje y mostrar la evolución del proyecto dentro de la ruta de formación en desarrollo de software.
-
-- `academia`: ubicación del proyecto académico terminado.
-- `aprendizaje`: ruta de ejercicios, fundamentos y práctica progresiva.
-- `chiletedevpath`: criterios, políticas y lineamientos de la marca.
+Este proyecto forma parte de `academia` porque conserva evidencia de aprendizaje aplicada a Java, POO, algoritmos y estructuras de datos. En la web aparece como proyecto académico terminado.

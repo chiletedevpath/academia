@@ -2,12 +2,6 @@
 
 Proyecto académico en Java para el curso de Diseño de Patrones de la UTP. El sistema modela una venta de ferretería aplicando POO, bajo acoplamiento, GRASP y patrones GOF sobre un dominio simple pero defendible.
 
-## Aviso de publicación
-
-Este proyecto se conserva dentro de `academia` como evidencia académica terminada de Chilete DevPath. No representa un producto comercial, un sistema real de ferretería ni una publicación oficial de la UTP.
-
-Los datos usados son de demostración. El objetivo es explicar diseño orientado a objetos y patrones de diseño, no operar ventas reales ni administrar inventario productivo.
-
 ## Contexto académico
 
 | Campo | Detalle |
@@ -155,10 +149,11 @@ Avance del proyecto: **100% como entrega académica**.
 | State | Implementado |
 | GRASP Controlador | Implementado |
 | Comentarios tecnicos de apoyo | Implementado |
+
 ## Cierre académico
 
-El proyecto queda cerrado como evidencia académica de patrones de diseño. Cualquier mejora futura debe tratarse como una nueva versión de aprendizaje o como una refactorización posterior, sin cambiar la lógica entregada.
+El proyecto queda cerrado como evidencia académica de patrones de diseño. Cualquier mejora futura debe tratarse como una nueva versión de aprendizaje o una refactorización posterior, sin cambiar la lógica entregada.
 
 ## Relación con Chilete DevPath
 
-Este proyecto forma parte de `academia` porque corresponde a una entrega académica formal. En la web debe mostrarse como proyecto académico terminado, no como portafolio profesional final.
+Este proyecto forma parte de `academia` porque conserva evidencia de aprendizaje aplicada a arquitectura, POO, GRASP y patrones de diseño. En la web aparece como proyecto académico terminado.

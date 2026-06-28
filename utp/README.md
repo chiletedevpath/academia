@@ -1,31 +1,19 @@
-# UTP
+# Proyectos UTP
 
-Registro de proyectos académicos formales realizados en la Universidad Tecnológica del Perú.
-
-Esta sección no almacena ejercicios de clase. Organiza proyectos, entregas o trabajos académicos formales del ecosistema Chilete DevPath, ya sea como repositorios propios o como contenido agrupado dentro de `academia`.
-
-## Organización
-
-```txt
-utp/
-├── ciclo-04/
-└── ciclo-05/
-```
+Proyectos académicos desarrollados durante mi formación en Ingeniería de Sistemas e Informática en la UTP.
 
 ## Ciclo 04
 
-| Curso | Proyecto | Repositorio |
-|---|---|---|
-| Base de Datos I | Ferretería Soto DB | `ciclo-04/base-de-datos-i/ferreteria-soto-db` |
+| Curso | Proyecto | Enfoque | Acceso |
+|---|---|---|---|
+| Base de Datos I | Ferretería Soto DB | SQL Server, modelo relacional, inventario y ventas | [Ver proyecto](ciclo-04/base-de-datos-i/ferreteria-soto-db) |
 
 ## Ciclo 05
 
-| Curso | Proyecto | Repositorio |
-|---|---|---|
-| Base de Datos II | La Lucha BD Backend | `ciclo-05/base-de-datos-ii/utp-la-lucha-bd-backend.md` |
-| Algoritmos y Estructuras de Datos | Clínica Salud Vital | `ciclo-05/algoritmos-y-estructuras-de-datos/clinica-salud-vital` |
-| Patrones de Diseño | Ferretería Sys Patrones | `ciclo-05/patrones-de-diseno/ferreteria-sys-patrones` |
+| Curso | Proyecto | Enfoque | Acceso |
+|---|---|---|---|
+| Algoritmos y Estructuras de Datos | Clínica Salud Vital | Java, POO, estructuras de datos y CSV | [Ver proyecto](ciclo-05/algoritmos-y-estructuras-de-datos/clinica-salud-vital) |
+| Patrones de Diseño | Ferretería Sys Patrones | Java, arquitectura, GRASP y patrones GOF | [Ver proyecto](ciclo-05/patrones-de-diseno/ferreteria-sys-patrones) |
+| Base de Datos II | La Lucha BD Backend | Proyecto académico colaborativo en revisión interna | Referencia interna |
 
-## Mantenimiento
-
-Cuando se agregue un nuevo ciclo, crear una carpeta `ciclo-XX` y registrar sus proyectos en este README y en el README principal de `academia`.
+Estos proyectos muestran avance académico y aprendizaje aplicado. La selección de proyectos para portafolio profesional se trabajará después, con una curaduría diferente.
