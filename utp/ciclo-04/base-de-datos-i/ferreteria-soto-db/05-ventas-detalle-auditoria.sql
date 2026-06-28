@@ -95,9 +95,21 @@ CREATE TABLE dbo.AuditoriaVentas (
     IP NVARCHAR(50) NULL,
     UsuarioAdminID INT NULL,
 
-    FOREIGN KEY (VentaID) REFERENCES dbo.Ventas(ID),
     FOREIGN KEY (UsuarioAdminID) REFERENCES dbo.Usuarios(ID)
 );
+END;
+GO
+
+DECLARE @fkAuditoriaVenta NVARCHAR(200);
+
+SELECT @fkAuditoriaVenta = fk.name
+FROM sys.foreign_keys fk
+WHERE fk.parent_object_id = OBJECT_ID('dbo.AuditoriaVentas')
+  AND fk.referenced_object_id = OBJECT_ID('dbo.Ventas');
+
+IF @fkAuditoriaVenta IS NOT NULL
+BEGIN
+    EXEC(N'ALTER TABLE dbo.AuditoriaVentas DROP CONSTRAINT ' + QUOTENAME(@fkAuditoriaVenta));
 END;
 GO
 
@@ -195,4 +207,145 @@ SELECT
 FROM dbo.Ventas V
 LEFT JOIN dbo.DetalleVentas DV ON DV.VentaID = V.ID
 LEFT JOIN dbo.Productos P      ON P.ID       = DV.ProductoID;
+GO
+
+/********************************************************************************************
+    5.7 TABLA DE SALIDAS DE INVENTARIO
+    VINCULA CADA DETALLE DE VENTA CON UNO O VARIOS LOTES APLICANDO PEPS.
+********************************************************************************************/
+IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = 'SalidasInventario' AND schema_id = SCHEMA_ID('dbo'))
+BEGIN
+    CREATE TABLE dbo.SalidasInventario (
+        ID INT IDENTITY(1,1) PRIMARY KEY,
+        DetalleVentaID INT NOT NULL,
+        LoteID INT NOT NULL,
+        ProductoID INT NOT NULL,
+        Cantidad INT NOT NULL,
+        CostoUnitarioEnSoles DECIMAL(10,2) NOT NULL,
+        CostoTotalEnSoles AS (Cantidad * CostoUnitarioEnSoles) PERSISTED,
+        FechaSalida DATETIME NOT NULL DEFAULT(GETDATE()),
+        CONSTRAINT FK_SalidasInventario_DetalleVenta
+            FOREIGN KEY (DetalleVentaID) REFERENCES dbo.DetalleVentas(ID),
+        CONSTRAINT FK_SalidasInventario_Lote
+            FOREIGN KEY (LoteID) REFERENCES dbo.EntradasInventario(ID),
+        CONSTRAINT FK_SalidasInventario_Producto
+            FOREIGN KEY (ProductoID) REFERENCES dbo.Productos(ID)
+    );
+END;
+GO
+
+/********************************************************************************************
+    5.8 PROCEDIMIENTO PARA APLICAR PEPS A UN DETALLE DE VENTA
+********************************************************************************************/
+CREATE OR ALTER PROCEDURE dbo.AplicarPEPS_DetalleVenta
+(
+    @DetalleVentaID INT
+)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE
+        @ProductoID INT,
+        @CantidadPendiente INT,
+        @CantidadConsumir INT,
+        @LoteID INT,
+        @CostoUnitarioLote DECIMAL(10,2);
+
+    SELECT
+        @ProductoID = ProductoID,
+        @CantidadPendiente = Cantidad
+    FROM dbo.DetalleVentas
+    WHERE ID = @DetalleVentaID;
+
+    IF @ProductoID IS NULL
+    BEGIN
+        RAISERROR('DETALLE DE VENTA NO ENCONTRADO', 16, 1);
+        RETURN;
+    END
+
+    DELETE FROM dbo.SalidasInventario
+    WHERE DetalleVentaID = @DetalleVentaID;
+
+    DECLARE @StockTotalDisponible INT;
+
+    SELECT @StockTotalDisponible = ISNULL(SUM(StockDisponible), 0)
+    FROM dbo.EntradasInventario
+    WHERE ProductoID = @ProductoID;
+
+    IF @StockTotalDisponible < @CantidadPendiente
+    BEGIN
+        RAISERROR('STOCK INSUFICIENTE PARA APLICAR PEPS', 16, 1);
+        RETURN;
+    END
+
+    WHILE @CantidadPendiente > 0
+    BEGIN
+        SELECT TOP 1
+            @LoteID = ID,
+            @CostoUnitarioLote = CostoUnitarioEnSoles,
+            @CantidadConsumir =
+                CASE
+                    WHEN StockDisponible >= @CantidadPendiente THEN @CantidadPendiente
+                    ELSE StockDisponible
+                END
+        FROM dbo.EntradasInventario
+        WHERE ProductoID = @ProductoID
+          AND StockDisponible > 0
+        ORDER BY FechaCompra ASC, ID ASC;
+
+        IF @LoteID IS NULL
+        BEGIN
+            RAISERROR('NO SE ENCONTRO LOTE DISPONIBLE PARA PEPS', 16, 1);
+            RETURN;
+        END
+
+        INSERT INTO dbo.SalidasInventario
+            (DetalleVentaID, LoteID, ProductoID, Cantidad, CostoUnitarioEnSoles)
+        VALUES
+            (@DetalleVentaID, @LoteID, @ProductoID, @CantidadConsumir, @CostoUnitarioLote);
+
+        UPDATE dbo.EntradasInventario
+        SET StockDisponible = StockDisponible - @CantidadConsumir
+        WHERE ID = @LoteID;
+
+        SET @CantidadPendiente = @CantidadPendiente - @CantidadConsumir;
+    END
+
+    DECLARE
+        @CostoTotal DECIMAL(18,2),
+        @CantidadTotal INT;
+
+    SELECT
+        @CantidadTotal = SUM(Cantidad),
+        @CostoTotal = SUM(CostoTotalEnSoles)
+    FROM dbo.SalidasInventario
+    WHERE DetalleVentaID = @DetalleVentaID;
+
+    UPDATE dbo.DetalleVentas
+    SET
+        CostoTotal = @CostoTotal,
+        CostoUnitario = @CostoTotal / NULLIF(@CantidadTotal, 0)
+    WHERE ID = @DetalleVentaID;
+END;
+GO
+
+/********************************************************************************************
+    5.9 VISTA RESUMEN DE COSTO POR DETALLE DE VENTA
+********************************************************************************************/
+CREATE OR ALTER VIEW dbo.vwDetalleVentasCostoPEPS
+AS
+SELECT
+    dv.ID AS DetalleVentaID,
+    dv.VentaID,
+    dv.ProductoID,
+    p.Nombre AS Producto,
+    dv.Cantidad,
+    dv.PrecioUnitario,
+    dv.Importe AS ImporteVenta,
+    dv.CostoUnitario,
+    dv.CostoTotal,
+    (dv.Importe - ISNULL(dv.CostoTotal, 0)) AS Margen
+FROM dbo.DetalleVentas dv
+INNER JOIN dbo.Productos p ON p.ID = dv.ProductoID;
 GO

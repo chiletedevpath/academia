@@ -12,22 +12,37 @@
 /********************************************************************************************
     2.0 LIMPIEZA DE CONSTRAINTS DUPLICADOS
 ********************************************************************************************/
-DECLARE @sql NVARCHAR(500);
+IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = 'Clientes' AND schema_id = SCHEMA_ID('dbo'))
+BEGIN
+    CREATE TABLE dbo.Clientes (
+        ID INT IDENTITY(1,1) PRIMARY KEY,
+        Nombres NVARCHAR(150) NOT NULL,
+        Apellidos NVARCHAR(150) NOT NULL,
+        DNI NVARCHAR(15) NOT NULL,
+        Direccion NVARCHAR(300) NULL,
+        RUC NVARCHAR(20) NULL,
+        RazonSocial NVARCHAR(200) NULL,
+        FechaCreacion DATETIMEOFFSET NOT NULL DEFAULT(SYSDATETIMEOFFSET())
+    );
+END;
+GO
 
-SELECT @sql = 'ALTER TABLE Clientes DROP CONSTRAINT ' + name
+DECLARE @sql NVARCHAR(MAX) = N'';
+
+SELECT @sql = @sql + N'ALTER TABLE dbo.Clientes DROP CONSTRAINT ' + QUOTENAME(name) + N';'
 FROM sys.objects
 WHERE type = 'C' AND (
     name LIKE 'CK_Clientes_DNI_%' OR
     name LIKE 'CK_Clientes_RUC_%'
 );
 
-IF @sql IS NOT NULL EXEC(@sql);
+IF @sql <> N'' EXEC(@sql);
 
 IF EXISTS (SELECT 1 FROM sys.objects WHERE name = 'UQ_Clientes_DNI')
-    ALTER TABLE Clientes DROP CONSTRAINT UQ_Clientes_DNI;
+    ALTER TABLE dbo.Clientes DROP CONSTRAINT UQ_Clientes_DNI;
 
 IF EXISTS (SELECT 1 FROM sys.objects WHERE name = 'UQ_Clientes_RUC')
-    ALTER TABLE Clientes DROP CONSTRAINT UQ_Clientes_RUC;
+    ALTER TABLE dbo.Clientes DROP CONSTRAINT UQ_Clientes_RUC;
 GO
 
 

@@ -1,30 +1,41 @@
 /********************************************************************************************
-    SISTEMA DE BASE DE DATOS: FERRETER�A SOTO
+    ARCHIVO: 00-create-database.sql
+********************************************************************************************/
+
+/********************************************************************************************
+    SISTEMA DE BASE DE DATOS: FERRETERÍA SOTO
 
     AUTOR: ADRIAN PISCO SOTO
 ********************************************************************************************/
 
 
 /********************************************************************************************
-    0. CREACI�N DE LA BASE DE DATOS
+    0. CREACIÓN DE LA BASE DE DATOS
 ********************************************************************************************/
-CREATE DATABASE ferreteriaSotoBD;
+IF DB_ID('ferreteriaSotoBD') IS NULL
+BEGIN
+    CREATE DATABASE ferreteriaSotoBD;
+END;
 GO
 
 USE ferreteriaSotoBD;
 GO
 
 /********************************************************************************************
+    ARCHIVO: 01-usuarios.sql
+********************************************************************************************/
+
+/********************************************************************************************
     1. MODULO DE USUARIOS Y AUDITORIA
     INCLUYE:
-        - TABLAS DE CATALOGO PARA ROLES Y ESTADOS
-        - TABLA PRINCIPAL USUARIOS
-        - VALIDACION DE CORREO
-        - INDICES PARA OPTIMIZAR LOGIN
-        - TABLA DE AUDITORIA DE USUARIOS
-        - TRIGGER CORPORATIVO DE AUDITORIA
-        - PROCEDIMIENTO ALMACENADO PARA CREAR USUARIOS
-        - CARGA INICIAL DE CUENTAS
+        • TABLAS DE CATALOGO PARA ROLES Y ESTADOS
+        • TABLA PRINCIPAL USUARIOS
+        • VALIDACION DE CORREO
+        • INDICES PARA OPTIMIZAR LOGIN
+        • TABLA DE AUDITORIA DE USUARIOS
+        • TRIGGER CORPORATIVO DE AUDITORIA
+        • PROCEDIMIENTO ALMACENADO PARA CREAR USUARIOS
+        • CARGA INICIAL DE CUENTAS
 ********************************************************************************************/
 
 
@@ -127,7 +138,7 @@ GO
 
 
 /********************************************************************************************
-    1.6 TRIGGER DE AUDITORIA � VERSION CORREGIDA
+    1.6 TRIGGER DE AUDITORIA — VERSION CORREGIDA
 ********************************************************************************************/
 
 CREATE OR ALTER TRIGGER TR_Usuarios_Acciones
@@ -277,6 +288,10 @@ SELECT * FROM dbo.AuditoriaUsuarios;
 GO
 
 /********************************************************************************************
+    ARCHIVO: 02-clientes.sql
+********************************************************************************************/
+
+/********************************************************************************************
     2. MODULO CLIENTES (PERSONAS Y EMPRESAS)
     OBJETIVO:
         - ADMINISTRAR CLIENTES PARA BOLETAS Y FACTURAS
@@ -290,22 +305,37 @@ GO
 /********************************************************************************************
     2.0 LIMPIEZA DE CONSTRAINTS DUPLICADOS
 ********************************************************************************************/
-DECLARE @sql NVARCHAR(500);
+IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = 'Clientes' AND schema_id = SCHEMA_ID('dbo'))
+BEGIN
+    CREATE TABLE dbo.Clientes (
+        ID INT IDENTITY(1,1) PRIMARY KEY,
+        Nombres NVARCHAR(150) NOT NULL,
+        Apellidos NVARCHAR(150) NOT NULL,
+        DNI NVARCHAR(15) NOT NULL,
+        Direccion NVARCHAR(300) NULL,
+        RUC NVARCHAR(20) NULL,
+        RazonSocial NVARCHAR(200) NULL,
+        FechaCreacion DATETIMEOFFSET NOT NULL DEFAULT(SYSDATETIMEOFFSET())
+    );
+END;
+GO
 
-SELECT @sql = 'ALTER TABLE Clientes DROP CONSTRAINT ' + name
+DECLARE @sql NVARCHAR(MAX) = N'';
+
+SELECT @sql = @sql + N'ALTER TABLE dbo.Clientes DROP CONSTRAINT ' + QUOTENAME(name) + N';'
 FROM sys.objects
 WHERE type = 'C' AND (
     name LIKE 'CK_Clientes_DNI_%' OR
     name LIKE 'CK_Clientes_RUC_%'
 );
 
-IF @sql IS NOT NULL EXEC(@sql);
+IF @sql <> N'' EXEC(@sql);
 
 IF EXISTS (SELECT 1 FROM sys.objects WHERE name = 'UQ_Clientes_DNI')
-    ALTER TABLE Clientes DROP CONSTRAINT UQ_Clientes_DNI;
+    ALTER TABLE dbo.Clientes DROP CONSTRAINT UQ_Clientes_DNI;
 
 IF EXISTS (SELECT 1 FROM sys.objects WHERE name = 'UQ_Clientes_RUC')
-    ALTER TABLE Clientes DROP CONSTRAINT UQ_Clientes_RUC;
+    ALTER TABLE dbo.Clientes DROP CONSTRAINT UQ_Clientes_RUC;
 GO
 
 
@@ -413,13 +443,18 @@ FROM sys.indexes
 WHERE object_id = OBJECT_ID('Clientes');
 GO
 
+
+/********************************************************************************************
+    ARCHIVO: 03-clasificacion-productos.sql
+********************************************************************************************/
+
 /********************************************************************************************
     3. MODULO DE CLASIFICACION DE PRODUCTOS
     OBJETIVO:
-        - DEFINIR FAMILIAS, GRUPOS, MARCAS, UNIDADES Y LINEAS
-        - EVITAR DUPLICADOS LOGICOS EN CATALOGOS
-        - MEJORAR RENDIMIENTO DE CONSULTAS Y JOINS
-        - PREPARAR LA BASE PARA CRECIMIENTO DEL INVENTARIO
+        • DEFINIR FAMILIAS, GRUPOS, MARCAS, UNIDADES Y LINEAS
+        • EVITAR DUPLICADOS LOGICOS EN CATALOGOS
+        • MEJORAR RENDIMIENTO DE CONSULTAS Y JOINS
+        • PREPARAR LA BASE PARA CRECIMIENTO DEL INVENTARIO
 ********************************************************************************************/
 
 USE ferreteriaSotoBD;
@@ -499,7 +534,7 @@ GO
 
 
 /********************************************************************************************
-    3.2 UNICIDAD LOGICA � SE EVITAN DUPLICADOS
+    3.2 UNICIDAD LOGICA – SE EVITAN DUPLICADOS
 ********************************************************************************************/
 
 -- UNICIDAD EN UNIDADES DE MEDIDA (NOMBRE)
@@ -524,7 +559,7 @@ BEGIN
 END;
 GO
 
--- GRUPOS �NICOS POR FAMILIA
+-- GRUPOS ÚNICOS POR FAMILIA
 IF NOT EXISTS (
     SELECT 1 FROM sys.objects 
     WHERE name = 'UQ_Grupos_Familia_Nombre' AND type = 'UQ'
@@ -535,7 +570,7 @@ BEGIN
 END;
 GO
 
--- LINEAS �NICAS POR FAMILIA
+-- LINEAS ÚNICAS POR FAMILIA
 IF NOT EXISTS (
     SELECT 1 FROM sys.objects 
     WHERE name = 'UQ_Lineas_Familia_Nombre' AND type = 'UQ'
@@ -582,7 +617,7 @@ BEGIN
     INSERT INTO dbo.UnidadesMedida (Nombre, Abreviatura, Estado)
     VALUES 
         ('Unidad','UND','Activo'),
-        ('Gal�n','GLN','Activo'),
+        ('Galón','GLN','Activo'),
         ('Juego','JGO','Activo'),
         ('Kilogramo','KG','Activo'),
         ('Par','PAR','Activo');
@@ -602,120 +637,94 @@ UNION ALL SELECT 'LINEAS', COUNT(*) FROM dbo.Lineas;
 GO
 
 /********************************************************************************************
-    4. MODULO DE INVENTARIO CON PEPS (FIFO)
+    ARCHIVO: 04-productos.sql
+********************************************************************************************/
+
+/********************************************************************************************
+    4. MODULO DE PRODUCTOS E INVENTARIO DE ENTRADA
     OBJETIVO:
-        - REGISTRAR CADA COMPRA COMO UN LOTE DE INVENTARIO
-        - MANEJAR COSTOS EN DOLARES Y SOLES POR LOTE
-        - APLICAR PEPS (FIFO) AL MOMENTO DE LA VENTA
-        - CALCULAR COSTO DE VENTA POR DETALLE
-        - MANTENER TRAZABILIDAD COMPLETA POR LOTE
+        - CREAR EL CATALOGO PRINCIPAL DE PRODUCTOS.
+        - RELACIONAR PRODUCTOS CON CATALOGOS DE CLASIFICACION.
+        - REGISTRAR ENTRADAS DE INVENTARIO POR LOTES.
+        - PREPARAR EL STOCK PARA EL CONSUMO PEPS EN VENTAS.
 ********************************************************************************************/
 USE ferreteriaSotoBD;
 GO
 
+/********************************************************************************************
+    4.1 TABLA PRINCIPAL DE PRODUCTOS
+********************************************************************************************/
+IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = 'Productos' AND schema_id = SCHEMA_ID('dbo'))
+BEGIN
+    CREATE TABLE dbo.Productos (
+        ID INT IDENTITY(1,1) PRIMARY KEY,
+        Codigo NVARCHAR(30) NOT NULL CONSTRAINT UQ_Productos_Codigo UNIQUE,
+        Nombre NVARCHAR(150) NOT NULL,
+        FamiliaID INT NULL,
+        GrupoID INT NULL,
+        MarcaID INT NULL,
+        UnidadMedidaID INT NULL,
+        LineaID INT NULL,
+        PrecioCompra DECIMAL(10,2) NULL,
+        PrecioVenta DECIMAL(10,2) NULL,
+        StockMinimo INT NOT NULL DEFAULT 0,
+        Estado NVARCHAR(20) NOT NULL DEFAULT 'Activo'
+            CONSTRAINT CK_Productos_Estado CHECK (Estado IN ('Activo','Inactivo')),
+        FechaCreacion DATETIMEOFFSET NOT NULL DEFAULT(SYSDATETIMEOFFSET()),
+        FechaActualizacion DATETIMEOFFSET NULL,
+        CONSTRAINT FK_Productos_Familia FOREIGN KEY (FamiliaID) REFERENCES dbo.Familias(ID),
+        CONSTRAINT FK_Productos_Grupo FOREIGN KEY (GrupoID) REFERENCES dbo.Grupos(ID),
+        CONSTRAINT FK_Productos_Marca FOREIGN KEY (MarcaID) REFERENCES dbo.Marcas(ID),
+        CONSTRAINT FK_Productos_UnidadMedida FOREIGN KEY (UnidadMedidaID) REFERENCES dbo.UnidadesMedida(ID),
+        CONSTRAINT FK_Productos_Linea FOREIGN KEY (LineaID) REFERENCES dbo.Lineas(ID)
+    );
+END;
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_Productos_Nombre')
+BEGIN
+    CREATE INDEX IX_Productos_Nombre ON dbo.Productos(Nombre);
+END;
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_Productos_Estado')
+BEGIN
+    CREATE INDEX IX_Productos_Estado ON dbo.Productos(Estado);
+END;
+GO
 
 /********************************************************************************************
-    4.1 TABLA DE ENTRADAS DE INVENTARIO (POR LOTES)
-    CADA REGISTRO REPRESENTA UNA COMPRA DE UN PRODUCTO EN UNA FECHA Y TIPO DE CAMBIO DETERMINADO
+    4.2 TABLA DE ENTRADAS DE INVENTARIO
+    CADA REGISTRO REPRESENTA UNA COMPRA O INGRESO DE STOCK.
 ********************************************************************************************/
 IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = 'EntradasInventario' AND schema_id = SCHEMA_ID('dbo'))
 BEGIN
     CREATE TABLE dbo.EntradasInventario (
         ID INT IDENTITY(1,1) PRIMARY KEY,
-
         ProductoID INT NOT NULL,
-
         Cantidad INT NOT NULL,
-        StockDisponible INT NOT NULL,  -- SE DESCUENTA CUANDO SE VENDE
-
+        StockDisponible INT NOT NULL,
         PrecioCompra DECIMAL(10,2) NOT NULL,
         Moneda NVARCHAR(10) NOT NULL
             CONSTRAINT CK_EntradasInventario_Moneda CHECK (Moneda IN ('PEN','USD')),
-
-        TipoCambio DECIMAL(10,4) NOT NULL, -- TIPO DE CAMBIO USADO EN ESTA COMPRA
-
+        TipoCambio DECIMAL(10,4) NOT NULL,
         CostoUnitarioEnSoles AS (
-            CASE 
+            CASE
                 WHEN Moneda = 'USD' THEN PrecioCompra * TipoCambio
                 ELSE PrecioCompra
             END
         ),
-
         FechaCompra DATETIME NOT NULL DEFAULT(GETDATE()),
-
         CONSTRAINT FK_EntradasInventario_Producto
             FOREIGN KEY (ProductoID) REFERENCES dbo.Productos(ID)
     );
 END;
 GO
 
-
 /********************************************************************************************
-    4.2 TABLA DE SALIDAS DE INVENTARIO (COSTO DE VENTA POR LOTE)
-    VINCULA CADA DETALLE DE VENTA CON UNO O VARIOS LOTES (ENTRADAS) APLICANDO PEPS
+    4.3 PROCEDIMIENTO PARA REGISTRAR ENTRADA DE INVENTARIO
 ********************************************************************************************/
-IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = 'SalidasInventario' AND schema_id = SCHEMA_ID('dbo'))
-BEGIN
-    CREATE TABLE dbo.SalidasInventario (
-        ID INT IDENTITY(1,1) PRIMARY KEY,
-
-        DetalleVentaID INT NOT NULL,
-        LoteID INT NOT NULL,
-        ProductoID INT NOT NULL,
-
-        Cantidad INT NOT NULL,
-        CostoUnitarioEnSoles DECIMAL(10,2) NOT NULL,
-        CostoTotalEnSoles AS (Cantidad * CostoUnitarioEnSoles) PERSISTED,
-
-        FechaSalida DATETIME NOT NULL DEFAULT(GETDATE()),
-
-        CONSTRAINT FK_SalidasInventario_DetalleVenta 
-            FOREIGN KEY (DetalleVentaID) REFERENCES dbo.DetalleVentas(ID),
-
-        CONSTRAINT FK_SalidasInventario_Lote
-            FOREIGN KEY (LoteID) REFERENCES dbo.EntradasInventario(ID),
-
-        CONSTRAINT FK_SalidasInventario_Producto
-            FOREIGN KEY (ProductoID) REFERENCES dbo.Productos(ID)
-    );
-END;
-GO
-
-
-/********************************************************************************************
-    4.3 CAMPOS DE COSTO EN DETALLEVENTAS
-    SE AGREGA EL COSTO UNITARIO Y TOTAL SEGUN PEPS
-********************************************************************************************/
-IF COL_LENGTH('dbo.DetalleVentas', 'CostoUnitario') IS NULL
-BEGIN
-    ALTER TABLE dbo.DetalleVentas
-    ADD CostoUnitario DECIMAL(10,2) NULL;
-END;
-GO
-
-IF COL_LENGTH('dbo.DetalleVentas', 'CostoTotal') IS NULL
-BEGIN
-    ALTER TABLE dbo.DetalleVentas
-    ADD CostoTotal DECIMAL(10,2) NULL;
-END;
-GO
-
-
-/********************************************************************************************
-    4.4 PROCEDIMIENTO PARA REGISTRAR ENTRADA DE INVENTARIO (COMPRA / INGRESO)
-    USO:
-        EXEC RegistrarEntradaInventario 
-            @ProductoID = 1,
-            @Cantidad = 50,
-            @PrecioCompra = 10.50,
-            @Moneda = 'USD',
-            @TipoCambio = 3.80;
-********************************************************************************************/
-IF EXISTS (SELECT 1 FROM sys.objects WHERE name = 'RegistrarEntradaInventario' AND type = 'P')
-    DROP PROCEDURE dbo.RegistrarEntradaInventario;
-GO
-
-CREATE PROCEDURE dbo.RegistrarEntradaInventario
+CREATE OR ALTER PROCEDURE dbo.RegistrarEntradaInventario
 (
     @ProductoID INT,
     @Cantidad INT,
@@ -726,6 +735,12 @@ CREATE PROCEDURE dbo.RegistrarEntradaInventario
 AS
 BEGIN
     SET NOCOUNT ON;
+
+    IF NOT EXISTS (SELECT 1 FROM dbo.Productos WHERE ID = @ProductoID)
+    BEGIN
+        RAISERROR('PRODUCTO NO ENCONTRADO', 16, 1);
+        RETURN;
+    END
 
     IF @Cantidad <= 0
     BEGIN
@@ -752,165 +767,33 @@ BEGIN
 END;
 GO
 
-
 /********************************************************************************************
-    4.5 PROCEDIMIENTO PARA APLICAR PEPS A UN DETALLE DE VENTA
-    OBJETIVO:
-        - CONSUMIR STOCK DE LOS LOTES MAS ANTIGUOS (FECHA COMPRA ASCENDENTE)
-        - REGISTRAR SALIDAS EN SalidasInventario
-        - CALCULAR COSTOUnitario Y COSTOTotal EN DetalleVentas
-    NOTA:
-        ESTE PROCEDIMIENTO NO CREA LA VENTA NI EL DETALLE.
-        SE LLAMA DESPUES DE INSERTAR EN DetalleVentas.
+    4.4 CONSULTA DE STOCK DISPONIBLE POR PRODUCTO
 ********************************************************************************************/
-IF EXISTS (SELECT 1 FROM sys.objects WHERE name = 'AplicarPEPS_DetalleVenta' AND type = 'P')
-    DROP PROCEDURE dbo.AplicarPEPS_DetalleVenta;
-GO
-
-CREATE PROCEDURE dbo.AplicarPEPS_DetalleVenta
-(
-    @DetalleVentaID INT
-)
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    DECLARE 
-        @ProductoID INT,
-        @CantidadPendiente INT,
-        @CantidadConsumir INT,
-        @LoteID INT,
-        @CostoUnitarioLote DECIMAL(10,2);
-
-    /* OBTENER DATOS DEL DETALLE DE VENTA */
-    SELECT 
-        @ProductoID = ProductoID,
-        @CantidadPendiente = Cantidad
-    FROM dbo.DetalleVentas
-    WHERE ID = @DetalleVentaID;
-
-    IF @ProductoID IS NULL
-    BEGIN
-        RAISERROR('DETALLE DE VENTA NO ENCONTRADO', 16, 1);
-        RETURN;
-    END
-
-    /* LIMPIAR POSIBLES SALIDAS ANTERIORES (RECALCULO) */
-    DELETE FROM dbo.SalidasInventario
-    WHERE DetalleVentaID = @DetalleVentaID;
-
-    /* VALIDAR STOCK DISPONIBLE (GLOBAL POR PRODUCTO) */
-    DECLARE @StockTotalDisponible INT;
-
-    SELECT @StockTotalDisponible = ISNULL(SUM(StockDisponible), 0)
-    FROM dbo.EntradasInventario
-    WHERE ProductoID = @ProductoID;
-
-    IF @StockTotalDisponible < @CantidadPendiente
-    BEGIN
-        RAISERROR('STOCK INSUFICIENTE PARA APLICAR PEPS', 16, 1);
-        RETURN;
-    END
-
-    /* BUCLE PEPS: CONSUMIR LOTES MAS ANTIGUOS PRIMERO */
-    WHILE @CantidadPendiente > 0
-    BEGIN
-        SELECT TOP 1 
-            @LoteID = ID,
-            @CostoUnitarioLote = CostoUnitarioEnSoles,
-            @CantidadConsumir = 
-                CASE 
-                    WHEN StockDisponible >= @CantidadPendiente THEN @CantidadPendiente
-                    ELSE StockDisponible
-                END
-        FROM dbo.EntradasInventario
-        WHERE ProductoID = @ProductoID
-          AND StockDisponible > 0
-        ORDER BY FechaCompra ASC, ID ASC;
-
-        IF @LoteID IS NULL
-        BEGIN
-            RAISERROR('NO SE ENCONTRO LOTE DISPONIBLE PARA PEPS', 16, 1);
-            RETURN;
-        END
-
-        /* REGISTRAR SALIDA POR ESTE LOTE */
-        INSERT INTO dbo.SalidasInventario
-            (DetalleVentaID, LoteID, ProductoID, Cantidad, CostoUnitarioEnSoles)
-        VALUES
-            (@DetalleVentaID, @LoteID, @ProductoID, @CantidadConsumir, @CostoUnitarioLote);
-
-        /* ACTUALIZAR STOCK DEL LOTE */
-        UPDATE dbo.EntradasInventario
-        SET StockDisponible = StockDisponible - @CantidadConsumir
-        WHERE ID = @LoteID;
-
-        /* REDUCIR CANTIDAD PENDIENTE */
-        SET @CantidadPendiente = @CantidadPendiente - @CantidadConsumir;
-    END
-
-    /* CALCULAR COSTO TOTAL DEL DETALLE A PARTIR DE LAS SALIDAS */
-    DECLARE 
-        @CostoTotal DECIMAL(18,2),
-        @CantidadTotal INT;
-
-    SELECT 
-        @CantidadTotal = SUM(Cantidad),
-        @CostoTotal = SUM(CostoTotalEnSoles)
-    FROM dbo.SalidasInventario
-    WHERE DetalleVentaID = @DetalleVentaID;
-
-    IF @CantidadTotal IS NULL OR @CantidadTotal = 0
-    BEGIN
-        RAISERROR('ERROR AL CALCULAR COSTO DE PEPS PARA EL DETALLE', 16, 1);
-        RETURN;
-    END
-
-    /* ACTUALIZAR COSTO EN DetalleVentas */
-    UPDATE dbo.DetalleVentas
-    SET 
-        CostoTotal = @CostoTotal,
-        CostoUnitario = @CostoTotal / @CantidadTotal
-    WHERE ID = @DetalleVentaID;
-END;
-GO
-
-
-/********************************************************************************************
-    4.6 VISTA RESUMEN DE COSTO POR DETALLE DE VENTA (OPCIONAL)
-    PERMITE VER RAPIDAMENTE:
-        - PRECIO DE VENTA
-        - COSTO (PEPS)
-        - MARGEN POR DETALLE
-********************************************************************************************/
-IF OBJECT_ID('dbo.vwDetalleVentasCostoPEPS', 'V') IS NOT NULL
-    DROP VIEW dbo.vwDetalleVentasCostoPEPS;
-GO
-
-CREATE VIEW dbo.vwDetalleVentasCostoPEPS
+CREATE OR ALTER VIEW dbo.vwStockDisponibleProductos
 AS
 SELECT
-    DV.ID AS DetalleVentaID,
-    DV.VentaID,
-    DV.ProductoID,
-    P.Nombre AS Producto,
-    DV.Cantidad,
-    DV.PrecioUnitario,
-    DV.Importe AS ImporteVenta,
-    DV.CostoUnitario,
-    DV.CostoTotal,
-    (DV.Importe - ISNULL(DV.CostoTotal, 0)) AS Margen
-FROM dbo.DetalleVentas DV
-INNER JOIN dbo.Productos P ON P.ID = DV.ProductoID;
+    p.ID AS ProductoID,
+    p.Codigo,
+    p.Nombre AS Producto,
+    ISNULL(SUM(ei.StockDisponible), 0) AS StockDisponible
+FROM dbo.Productos p
+LEFT JOIN dbo.EntradasInventario ei ON ei.ProductoID = p.ID
+GROUP BY p.ID, p.Codigo, p.Nombre;
 GO
 
+
 /********************************************************************************************
+    ARCHIVO: 05-ventas-detalle-auditoria.sql
+********************************************************************************************/
+
+﻿/********************************************************************************************
     5. MODULO DE VENTAS, DETALLE Y AUDITORIA
     OBJETIVO:
-        - REGISTRAR VENTAS (BOLETA / FACTURA / NOTA DE VENTA)
-        - ADMINISTRAR DETALLES POR PRODUCTO
-        - SOPORTAR COSTO POR PEPS (FIFO) MEDIANTE PROCEDIMIENTOS
-        - AUDITAR CUALQUIER CAMBIO EN EL REGISTRO DE VENTAS
+        • REGISTRAR VENTAS (BOLETA / FACTURA / NOTA DE VENTA)
+        • ADMINISTRAR DETALLES POR PRODUCTO
+        • SOPORTAR COSTO POR PEPS (FIFO) MEDIANTE PROCEDIMIENTOS
+        • AUDITAR CUALQUIER CAMBIO EN EL REGISTRO DE VENTAS
 ********************************************************************************************/
 USE ferreteriaSotoBD;
 GO
@@ -1001,9 +884,21 @@ CREATE TABLE dbo.AuditoriaVentas (
     IP NVARCHAR(50) NULL,
     UsuarioAdminID INT NULL,
 
-    FOREIGN KEY (VentaID) REFERENCES dbo.Ventas(ID),
     FOREIGN KEY (UsuarioAdminID) REFERENCES dbo.Usuarios(ID)
 );
+END;
+GO
+
+DECLARE @fkAuditoriaVenta NVARCHAR(200);
+
+SELECT @fkAuditoriaVenta = fk.name
+FROM sys.foreign_keys fk
+WHERE fk.parent_object_id = OBJECT_ID('dbo.AuditoriaVentas')
+  AND fk.referenced_object_id = OBJECT_ID('dbo.Ventas');
+
+IF @fkAuditoriaVenta IS NOT NULL
+BEGIN
+    EXEC(N'ALTER TABLE dbo.AuditoriaVentas DROP CONSTRAINT ' + QUOTENAME(@fkAuditoriaVenta));
 END;
 GO
 
@@ -1075,9 +970,9 @@ GO
 /********************************************************************************************
     5.6 VISTA DE CONSULTA DETALLADA DE VENTAS
     OBJETIVO:
-        - MOSTRAR INFORMACION COMPLETA DE UNA VENTA
-        - INCLUYE CABECERA, CLIENTE Y DETALLE DE PRODUCTOS
-        - PREPARADO PARA REPORTES Y CONSULTAS DESDE JAVA
+        • MOSTRAR INFORMACION COMPLETA DE UNA VENTA
+        • INCLUYE CABECERA, CLIENTE Y DETALLE DE PRODUCTOS
+        • PREPARADO PARA REPORTES Y CONSULTAS DESDE JAVA
 ********************************************************************************************/
 CREATE OR ALTER VIEW vwVentasDetalladas AS
 SELECT
@@ -1104,12 +999,158 @@ LEFT JOIN dbo.Productos P      ON P.ID       = DV.ProductoID;
 GO
 
 /********************************************************************************************
+    5.7 TABLA DE SALIDAS DE INVENTARIO
+    VINCULA CADA DETALLE DE VENTA CON UNO O VARIOS LOTES APLICANDO PEPS.
+********************************************************************************************/
+IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = 'SalidasInventario' AND schema_id = SCHEMA_ID('dbo'))
+BEGIN
+    CREATE TABLE dbo.SalidasInventario (
+        ID INT IDENTITY(1,1) PRIMARY KEY,
+        DetalleVentaID INT NOT NULL,
+        LoteID INT NOT NULL,
+        ProductoID INT NOT NULL,
+        Cantidad INT NOT NULL,
+        CostoUnitarioEnSoles DECIMAL(10,2) NOT NULL,
+        CostoTotalEnSoles AS (Cantidad * CostoUnitarioEnSoles) PERSISTED,
+        FechaSalida DATETIME NOT NULL DEFAULT(GETDATE()),
+        CONSTRAINT FK_SalidasInventario_DetalleVenta
+            FOREIGN KEY (DetalleVentaID) REFERENCES dbo.DetalleVentas(ID),
+        CONSTRAINT FK_SalidasInventario_Lote
+            FOREIGN KEY (LoteID) REFERENCES dbo.EntradasInventario(ID),
+        CONSTRAINT FK_SalidasInventario_Producto
+            FOREIGN KEY (ProductoID) REFERENCES dbo.Productos(ID)
+    );
+END;
+GO
+
+/********************************************************************************************
+    5.8 PROCEDIMIENTO PARA APLICAR PEPS A UN DETALLE DE VENTA
+********************************************************************************************/
+CREATE OR ALTER PROCEDURE dbo.AplicarPEPS_DetalleVenta
+(
+    @DetalleVentaID INT
+)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE
+        @ProductoID INT,
+        @CantidadPendiente INT,
+        @CantidadConsumir INT,
+        @LoteID INT,
+        @CostoUnitarioLote DECIMAL(10,2);
+
+    SELECT
+        @ProductoID = ProductoID,
+        @CantidadPendiente = Cantidad
+    FROM dbo.DetalleVentas
+    WHERE ID = @DetalleVentaID;
+
+    IF @ProductoID IS NULL
+    BEGIN
+        RAISERROR('DETALLE DE VENTA NO ENCONTRADO', 16, 1);
+        RETURN;
+    END
+
+    DELETE FROM dbo.SalidasInventario
+    WHERE DetalleVentaID = @DetalleVentaID;
+
+    DECLARE @StockTotalDisponible INT;
+
+    SELECT @StockTotalDisponible = ISNULL(SUM(StockDisponible), 0)
+    FROM dbo.EntradasInventario
+    WHERE ProductoID = @ProductoID;
+
+    IF @StockTotalDisponible < @CantidadPendiente
+    BEGIN
+        RAISERROR('STOCK INSUFICIENTE PARA APLICAR PEPS', 16, 1);
+        RETURN;
+    END
+
+    WHILE @CantidadPendiente > 0
+    BEGIN
+        SELECT TOP 1
+            @LoteID = ID,
+            @CostoUnitarioLote = CostoUnitarioEnSoles,
+            @CantidadConsumir =
+                CASE
+                    WHEN StockDisponible >= @CantidadPendiente THEN @CantidadPendiente
+                    ELSE StockDisponible
+                END
+        FROM dbo.EntradasInventario
+        WHERE ProductoID = @ProductoID
+          AND StockDisponible > 0
+        ORDER BY FechaCompra ASC, ID ASC;
+
+        IF @LoteID IS NULL
+        BEGIN
+            RAISERROR('NO SE ENCONTRO LOTE DISPONIBLE PARA PEPS', 16, 1);
+            RETURN;
+        END
+
+        INSERT INTO dbo.SalidasInventario
+            (DetalleVentaID, LoteID, ProductoID, Cantidad, CostoUnitarioEnSoles)
+        VALUES
+            (@DetalleVentaID, @LoteID, @ProductoID, @CantidadConsumir, @CostoUnitarioLote);
+
+        UPDATE dbo.EntradasInventario
+        SET StockDisponible = StockDisponible - @CantidadConsumir
+        WHERE ID = @LoteID;
+
+        SET @CantidadPendiente = @CantidadPendiente - @CantidadConsumir;
+    END
+
+    DECLARE
+        @CostoTotal DECIMAL(18,2),
+        @CantidadTotal INT;
+
+    SELECT
+        @CantidadTotal = SUM(Cantidad),
+        @CostoTotal = SUM(CostoTotalEnSoles)
+    FROM dbo.SalidasInventario
+    WHERE DetalleVentaID = @DetalleVentaID;
+
+    UPDATE dbo.DetalleVentas
+    SET
+        CostoTotal = @CostoTotal,
+        CostoUnitario = @CostoTotal / NULLIF(@CantidadTotal, 0)
+    WHERE ID = @DetalleVentaID;
+END;
+GO
+
+/********************************************************************************************
+    5.9 VISTA RESUMEN DE COSTO POR DETALLE DE VENTA
+********************************************************************************************/
+CREATE OR ALTER VIEW dbo.vwDetalleVentasCostoPEPS
+AS
+SELECT
+    dv.ID AS DetalleVentaID,
+    dv.VentaID,
+    dv.ProductoID,
+    p.Nombre AS Producto,
+    dv.Cantidad,
+    dv.PrecioUnitario,
+    dv.Importe AS ImporteVenta,
+    dv.CostoUnitario,
+    dv.CostoTotal,
+    (dv.Importe - ISNULL(dv.CostoTotal, 0)) AS Margen
+FROM dbo.DetalleVentas dv
+INNER JOIN dbo.Productos p ON p.ID = dv.ProductoID;
+GO
+
+
+/********************************************************************************************
+    ARCHIVO: 06-politicas-precios.sql
+********************************************************************************************/
+
+/********************************************************************************************
     6. MODULO DE POLITICAS DE PRECIOS (EMPRESARIAL)
     OBJETIVO:
-        - PERMITIR QUE EL GERENTE MODIFIQUE MARGENES DESDE LA APLICACION JAVA
-        - EVITAR MODIFICACION DIRECTA DE SQL
-        - ELIMINAR LOGICA DE PRECIOS FIJA EN EL SISTEMA
-        - APLICAR PRECIOS DE VENTA A PARTIR DE POLITICAS ACTIVAS
+        • PERMITIR QUE EL GERENTE MODIFIQUE MARGENES DESDE LA APLICACION JAVA
+        • EVITAR MODIFICACION DIRECTA DE SQL
+        • ELIMINAR LOGICA DE PRECIOS FIJA EN EL SISTEMA
+        • APLICAR PRECIOS DE VENTA A PARTIR DE POLITICAS ACTIVAS
 ********************************************************************************************/
 USE ferreteriaSotoBD;
 GO
@@ -1269,4 +1310,145 @@ BEGIN
         FechaActualizacion = SYSDATETIMEOFFSET()
     WHERE ID = @ID;
 END;
+GO
+
+/********************************************************************************************
+    ARCHIVO: 07-consultas-validacion.sql
+********************************************************************************************/
+
+/********************************************************************************************
+    7. CONSULTAS DE VALIDACION DEL PROYECTO
+    OBJETIVO:
+        - REVISAR QUE LOS MODULOS PRINCIPALES EXISTAN.
+        - VALIDAR REGISTROS BASE Y RELACIONES PRINCIPALES.
+        - CONSULTAR INVENTARIO, VENTAS, AUDITORIA Y POLITICAS DE PRECIOS.
+********************************************************************************************/
+
+USE ferreteriaSotoBD;
+GO
+
+/********************************************************************************************
+    7.1 RESUMEN DE TABLAS PRINCIPALES
+********************************************************************************************/
+SELECT 'Roles' AS Tabla, COUNT(*) AS Registros FROM dbo.Roles
+UNION ALL SELECT 'EstadosUsuario', COUNT(*) FROM dbo.EstadosUsuario
+UNION ALL SELECT 'Usuarios', COUNT(*) FROM dbo.Usuarios
+UNION ALL SELECT 'Clientes', COUNT(*) FROM dbo.Clientes
+UNION ALL SELECT 'Familias', COUNT(*) FROM dbo.Familias
+UNION ALL SELECT 'Grupos', COUNT(*) FROM dbo.Grupos
+UNION ALL SELECT 'Marcas', COUNT(*) FROM dbo.Marcas
+UNION ALL SELECT 'UnidadesMedida', COUNT(*) FROM dbo.UnidadesMedida
+UNION ALL SELECT 'Lineas', COUNT(*) FROM dbo.Lineas
+UNION ALL SELECT 'Productos', COUNT(*) FROM dbo.Productos
+UNION ALL SELECT 'EntradasInventario', COUNT(*) FROM dbo.EntradasInventario
+UNION ALL SELECT 'SalidasInventario', COUNT(*) FROM dbo.SalidasInventario
+UNION ALL SELECT 'Ventas', COUNT(*) FROM dbo.Ventas
+UNION ALL SELECT 'DetalleVentas', COUNT(*) FROM dbo.DetalleVentas
+UNION ALL SELECT 'PoliticaPrecios', COUNT(*) FROM dbo.PoliticaPrecios;
+GO
+
+/********************************************************************************************
+    7.2 USUARIOS Y AUDITORIA
+********************************************************************************************/
+SELECT
+    u.ID,
+    u.Usuario,
+    u.Correo,
+    r.Nombre AS Rol,
+    eu.Nombre AS Estado,
+    u.FechaCreacion
+FROM dbo.Usuarios u
+INNER JOIN dbo.Roles r ON r.ID = u.RolID
+INNER JOIN dbo.EstadosUsuario eu ON eu.ID = u.EstadoID
+ORDER BY u.ID;
+GO
+
+SELECT TOP 20
+    au.ID,
+    u.Usuario AS UsuarioAfectado,
+    au.Accion,
+    au.Fecha
+FROM dbo.AuditoriaUsuarios au
+LEFT JOIN dbo.Usuarios u ON u.ID = au.UsuarioID
+ORDER BY au.Fecha DESC;
+GO
+
+/********************************************************************************************
+    7.3 CLIENTES
+********************************************************************************************/
+SELECT TOP 20
+    ID,
+    Nombres,
+    Apellidos,
+    DNI,
+    RUC,
+    RazonSocial,
+    FechaCreacion
+FROM dbo.Clientes
+ORDER BY ID;
+GO
+
+/********************************************************************************************
+    7.4 PRODUCTOS, CATALOGOS E INVENTARIO
+********************************************************************************************/
+SELECT TOP 20
+    p.ID,
+    p.Codigo,
+    p.Nombre,
+    f.Nombre AS Familia,
+    g.Nombre AS Grupo,
+    m.Nombre AS Marca,
+    um.Abreviatura AS Unidad,
+    l.Nombre AS Linea,
+    p.PrecioCompra,
+    p.PrecioVenta,
+    p.StockMinimo,
+    p.Estado
+FROM dbo.Productos p
+LEFT JOIN dbo.Familias f ON f.ID = p.FamiliaID
+LEFT JOIN dbo.Grupos g ON g.ID = p.GrupoID
+LEFT JOIN dbo.Marcas m ON m.ID = p.MarcaID
+LEFT JOIN dbo.UnidadesMedida um ON um.ID = p.UnidadMedidaID
+LEFT JOIN dbo.Lineas l ON l.ID = p.LineaID
+ORDER BY p.ID;
+GO
+
+SELECT
+    p.ID AS ProductoID,
+    p.Nombre AS Producto,
+    SUM(ei.StockDisponible) AS StockDisponible
+FROM dbo.Productos p
+LEFT JOIN dbo.EntradasInventario ei ON ei.ProductoID = p.ID
+GROUP BY p.ID, p.Nombre
+ORDER BY p.ID;
+GO
+
+/********************************************************************************************
+    7.5 VENTAS Y COSTO PEPS
+********************************************************************************************/
+SELECT TOP 30 *
+FROM dbo.vwVentasDetalladas
+ORDER BY IDVenta DESC;
+GO
+
+SELECT TOP 30 *
+FROM dbo.vwDetalleVentasCostoPEPS
+ORDER BY DetalleVentaID DESC;
+GO
+
+SELECT TOP 20
+    av.ID,
+    av.VentaID,
+    av.Accion,
+    av.Fecha
+FROM dbo.AuditoriaVentas av
+ORDER BY av.Fecha DESC;
+GO
+
+/********************************************************************************************
+    7.6 POLITICAS DE PRECIOS
+********************************************************************************************/
+SELECT *
+FROM dbo.vwPoliticaPrecios
+ORDER BY RangoMin;
 GO

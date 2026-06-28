@@ -25,9 +25,10 @@ Construir una base de datos relacional que permita representar operaciones bási
 | `01-usuarios.sql` | Define usuarios, roles, estados y auditoría. |
 | `02-clientes.sql` | Modela clientes persona y empresa. |
 | `03-clasificacion-productos.sql` | Organiza familias, grupos, marcas, unidades y líneas. |
-| `04-productos.sql` | Gestiona productos e inventario con criterio PEPS/FIFO. |
-| `05-ventas-detalle-auditoria.sql` | Registra ventas, detalles y auditoría. |
+| `04-productos.sql` | Crea productos y registra entradas de inventario por lotes. |
+| `05-ventas-detalle-auditoria.sql` | Registra ventas, detalles, auditoría y salida de inventario con PEPS/FIFO. |
 | `06-politicas-precios.sql` | Define reglas de precios aplicadas al dominio. |
+| `07-consultas-validacion.sql` | Reúne consultas para validar módulos, relaciones y evidencia técnica. |
 | `codigo-fuente-bd-ferreteria-soto.sql` | Script consolidado del proyecto. |
 | `reset-inventario-ventas.sql` | Reinicia datos de inventario y ventas para pruebas. |
 
@@ -48,7 +49,7 @@ Construir una base de datos relacional que permita representar operaciones bási
 Abrir los scripts en SQL Server Management Studio o Azure Data Studio y ejecutarlos en orden:
 
 ```txt
-00 -> 01 -> 02 -> 03 -> 04 -> 05 -> 06
+00 -> 01 -> 02 -> 03 -> 04 -> 05 -> 06 -> 07
 ```
 
 También se puede revisar el archivo consolidado:
@@ -67,10 +68,36 @@ Proyecto terminado como entrega académica.
 | Usuarios y auditoría | Implementado |
 | Clientes | Implementado |
 | Catálogos de productos | Implementado |
-| Inventario PEPS/FIFO | Implementado |
+| Productos | Implementado |
+| Entradas de inventario | Implementado |
 | Ventas y detalle | Implementado |
+| Salidas de inventario PEPS/FIFO | Implementado |
 | Políticas de precios | Implementado |
+| Consultas de validación | Implementado |
 | Script consolidado | Implementado |
+
+## Modelo principal
+
+```mermaid
+erDiagram
+    ROLES ||--o{ USUARIOS : asigna
+    ESTADOS_USUARIO ||--o{ USUARIOS : clasifica
+    CLIENTES ||--o{ VENTAS : registra
+    FAMILIAS ||--o{ GRUPOS : agrupa
+    FAMILIAS ||--o{ LINEAS : organiza
+    FAMILIAS ||--o{ PRODUCTOS : clasifica
+    GRUPOS ||--o{ PRODUCTOS : clasifica
+    MARCAS ||--o{ PRODUCTOS : identifica
+    UNIDADES_MEDIDA ||--o{ PRODUCTOS : mide
+    LINEAS ||--o{ PRODUCTOS : organiza
+    PRODUCTOS ||--o{ ENTRADAS_INVENTARIO : recibe
+    PRODUCTOS ||--o{ DETALLE_VENTAS : vende
+    VENTAS ||--o{ DETALLE_VENTAS : contiene
+    DETALLE_VENTAS ||--o{ SALIDAS_INVENTARIO : consume
+    ENTRADAS_INVENTARIO ||--o{ SALIDAS_INVENTARIO : abastece
+    VENTAS ||--o{ AUDITORIA_VENTAS : audita
+    USUARIOS ||--o{ AUDITORIA_USUARIOS : audita
+```
 
 ## Aprendizajes aplicados
 

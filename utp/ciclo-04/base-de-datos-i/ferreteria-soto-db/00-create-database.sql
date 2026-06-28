@@ -8,7 +8,10 @@
 /********************************************************************************************
     0. CREACIÓN DE LA BASE DE DATOS
 ********************************************************************************************/
-CREATE DATABASE ferreteriaSotoBD;
+IF DB_ID('ferreteriaSotoBD') IS NULL
+BEGIN
+    CREATE DATABASE ferreteriaSotoBD;
+END;
 GO
 
 USE ferreteriaSotoBD;
