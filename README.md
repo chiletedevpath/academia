@@ -40,8 +40,8 @@ academia/
 |---|---|---|---|---|
 | 04 | Base de Datos I | Ferretería Soto DB | `utp/ciclo-04/base-de-datos-i/ferreteria-soto-db` | Agrupado |
 | 05 | Base de Datos II | La Lucha BD Backend | `utp/ciclo-05/base-de-datos-ii/utp-la-lucha-bd-backend.md` | No publicable en web |
-| 05 | Algoritmos y Estructuras de Datos | Clinica Salud Vital | [utp-clinica-salud-vital](https://github.com/chiletedevpath/utp-clinica-salud-vital) | En proceso |
-| 05 | Patrones de Diseno | Ferreteria Sys Patrones | [utp-ferreteria-sys-patrones](https://github.com/chiletedevpath/utp-ferreteria-sys-patrones) | En proceso |
+| 05 | Algoritmos y Estructuras de Datos | Clínica Salud Vital | `utp/ciclo-05/algoritmos-y-estructuras-de-datos/clinica-salud-vital` | Agrupado |
+| 05 | Patrones de Diseño | Ferretería Sys Patrones | `utp/ciclo-05/patrones-de-diseno/ferreteria-sys-patrones` | Agrupado |
 
 ### Tecsup
 
