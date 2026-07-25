@@ -1,20 +1,21 @@
 # Proyectos Tecsup
 
-Proyectos desarrollados como parte de mi formación complementaria en Tecsup, principalmente en la ruta **Fullstack con Java**.
+Proyectos desarrollados como parte de mi formaciÃ³n complementaria en Tecsup, principalmente en la ruta **Fullstack con Java**.
+
+Esta secciÃ³n conserva prÃ¡cticas backend y frontend orientadas a integraciÃ³n, persistencia, consumo de servicios y construcciÃ³n de aplicaciones web.
 
 ## Fullstack con Java
 
-| Enfoque | Proyecto | Tecnologías | Acceso |
-|---|---|---|---|
-| Backend | SUNAT Consulta | Java, Spring Boot, OpenFeign, H2 | [Ver proyecto](cursos/fullstack-con-java/proyectos/sunat-consulta) |
-| Backend | Backend Final Exam | Java, Spring Boot, PostgreSQL, microservicios | [Ver proyecto](cursos/fullstack-con-java/proyectos/backend-final-exam) |
-| Frontend | CRUD React Productos | React, Vite, JavaScript, Fetch API | [Ver proyecto](cursos/fullstack-con-java/proyectos/crud-react-productos) |
+| Enfoque | Proyecto | TecnologÃ­as | Estado | Acceso |
+|---|---|---|---|---|
+| Backend | SUNAT Consulta | Java, Spring Boot, OpenFeign, H2 | Validado con tests | [Ver proyecto](cursos/fullstack-con-java/proyectos/sunat-consulta) |
+| Backend | Backend Final Exam | Java, Spring Boot, PostgreSQL, microservicios | Implementado con deuda de configuraciÃ³n local | [Ver proyecto](cursos/fullstack-con-java/proyectos/backend-final-exam) |
+| Frontend | CRUD React Productos | React, Vite, JavaScript, Fetch API | Implementado | [Ver proyecto](cursos/fullstack-con-java/proyectos/crud-react-productos) |
 
-## Qué muestra esta sección
+## QuÃ© muestra esta secciÃ³n
 
-- Práctica backend con Spring Boot.
+- Backend con Spring Boot y separaciÃ³n por capas.
 - Consumo de APIs externas.
-- Persistencia con JPA y bases de datos.
-- Frontend con React y consumo de servicios REST.
-
-Estos proyectos complementan la ruta principal de aprendizaje y ayudan a mostrar evolución técnica desde ejercicios hacia entregas más completas.
+- Persistencia con JPA.
+- ConfiguraciÃ³n por variables de entorno.
+- Frontend React conectado a servicios REST.

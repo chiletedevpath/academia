@@ -1,46 +1,23 @@
 # ms-pedidos
 
-Microservicio backend desarrollado con Spring Boot para gestionar pedidos. Forma parte del examen final de backend de Tecsup junto con `ms-productos`.
+Microservicio backend desarrollado con Spring Boot para gestionar pedidos. Forma parte del **Backend Final Exam** de Tecsup junto con `ms-productos`.
 
-## Proposito
+## PropÃ³sito
 
-Permitir el registro, consulta, eliminacion y actualizacion de estado de pedidos, aplicando validaciones y calculando automaticamente el total del pedido.
-
-## Stack
-
-- Java 17
-- Spring Boot
-- Spring Data JPA
-- PostgreSQL
-- Maven
-- Lombok
-- Jakarta Validation
-- Docker
-- Render
+Permitir el registro, consulta, eliminaciÃ³n y actualizaciÃ³n de estado de pedidos, aplicando validaciones y cÃ¡lculo automÃ¡tico del total.
 
 ## Arquitectura
 
-El proyecto esta organizado por capas:
+| Paquete | Responsabilidad |
+|---|---|
+| `controller` | Expone endpoints REST. |
+| `service` | Contiene reglas de negocio. |
+| `repository` | Accede a datos con Spring Data JPA. |
+| `dto` | Define objetos de entrada. |
+| `entity` | Representa el modelo persistente. |
+| `exception` | Centraliza errores de la API. |
 
-- `controller`: endpoints REST.
-- `service`: reglas de negocio.
-- `repository`: acceso a datos.
-- `dto`: objetos de entrada y salida.
-- `entity`: modelo persistente.
-- `exception`: manejo de errores.
-
-## Funcionalidades
-
-- Registrar pedidos.
-- Listar pedidos.
-- Buscar pedido por ID.
-- Eliminar pedidos.
-- Actualizar estado de pedidos.
-- Validar datos de entrada.
-- Manejar excepciones de forma centralizada.
-- Calcular automaticamente el total del pedido.
-
-## Endpoints Principales
+## Endpoints principales
 
 ```http
 POST   /api/pedidos
@@ -50,22 +27,19 @@ DELETE /api/pedidos/{id}
 PATCH  /api/pedidos/{id}/estado
 ```
 
-## Variables de Entorno
+## Variables de entorno
 
 ```env
-DB_URL=
-DB_USERNAME=
-DB_PASSWORD=
-PORT=
+DB_URL=jdbc:postgresql://localhost:5432/nombre_bd
+DB_USERNAME=usuario_local
+DB_PASSWORD=password_local
+PORT=8081
 ```
 
-## Docker
+## ValidaciÃ³n actual
 
-```bash
-docker build -t ms-pedidos .
-docker run -p 8081:8081 ms-pedidos
-```
+El test de contexto falla cuando `${DB_URL}` no se resuelve durante pruebas. Para hacerlo reproducible se recomienda agregar un perfil `test` con H2 o documentar una base PostgreSQL local para validaciÃ³n.
 
 ## Estado
 
-Proyecto academico finalizado.
+Proyecto acadÃ©mico finalizado, con deuda pendiente en configuraciÃ³n de pruebas locales.

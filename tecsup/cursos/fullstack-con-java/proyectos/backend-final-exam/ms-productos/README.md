@@ -1,45 +1,23 @@
 # ms-productos
 
-Microservicio backend desarrollado con Spring Boot para gestionar productos. Forma parte del examen final de backend de Tecsup junto con `ms-pedidos`.
+Microservicio backend desarrollado con Spring Boot para gestionar productos. Forma parte del **Backend Final Exam** de Tecsup junto con `ms-pedidos`.
 
-## Proposito
+## PropÃ³sito
 
-Permitir el registro, consulta, actualizacion y eliminacion logica de productos, aplicando validaciones y persistencia en PostgreSQL.
-
-## Stack
-
-- Java 17
-- Spring Boot
-- Spring Data JPA
-- PostgreSQL
-- Maven
-- Lombok
-- Jakarta Validation
-- Docker
-- Render
+Permitir el registro, consulta, actualizaciÃ³n y eliminaciÃ³n lÃ³gica de productos, aplicando validaciones, persistencia en PostgreSQL y manejo centralizado de errores.
 
 ## Arquitectura
 
-El proyecto esta organizado por capas:
+| Paquete | Responsabilidad |
+|---|---|
+| `controller` | Expone endpoints REST. |
+| `service` | Contiene reglas de negocio. |
+| `repository` | Accede a datos con Spring Data JPA. |
+| `dto` | Define objetos de entrada. |
+| `entity` | Representa el modelo persistente. |
+| `exception` | Centraliza errores de la API. |
 
-- `controller`: endpoints REST.
-- `service`: reglas de negocio.
-- `repository`: acceso a datos.
-- `dto`: objetos de entrada y salida.
-- `entity`: modelo persistente.
-- `exception`: manejo de errores.
-
-## Funcionalidades
-
-- Registrar productos.
-- Listar productos.
-- Buscar producto por ID.
-- Actualizar productos.
-- Realizar eliminacion logica.
-- Validar datos de entrada.
-- Manejar excepciones de forma centralizada.
-
-## Endpoints Principales
+## Endpoints principales
 
 ```http
 POST   /api/productos
@@ -49,22 +27,19 @@ PUT    /api/productos/{id}
 DELETE /api/productos/{id}
 ```
 
-## Variables de Entorno
+## Variables de entorno
 
 ```env
-DB_URL=
-DB_USERNAME=
-DB_PASSWORD=
-PORT=
+DB_URL=jdbc:postgresql://localhost:5432/nombre_bd
+DB_USERNAME=usuario_local
+DB_PASSWORD=password_local
+PORT=8080
 ```
 
-## Docker
+## ValidaciÃ³n actual
 
-```bash
-docker build -t ms-productos .
-docker run -p 8080:8080 ms-productos
-```
+El test de contexto falla si no existe una URL JDBC vÃ¡lida para `DB_URL`. Para hacerlo reproducible se recomienda agregar un perfil `test` con H2 o una configuraciÃ³n de PostgreSQL local documentada.
 
 ## Estado
 
-Proyecto academico finalizado.
+Proyecto acadÃ©mico finalizado, con deuda pendiente en configuraciÃ³n de pruebas locales.
