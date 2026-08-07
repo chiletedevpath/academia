@@ -1,15 +1,15 @@
-# Gestor de CatÃ¡logo de Productos
+# Gestor de Catálogo de Productos
 
-Frontend acadÃ©mico desarrollado en React para administrar un catÃ¡logo de productos desde una interfaz conectada a una API backend.
+Frontend académico desarrollado en React para administrar un catálogo de productos desde una interfaz conectada a una API backend.
 
-## Contexto acadÃ©mico
+## Contexto académico
 
 | Dato | Detalle |
 |---|---|
-| InstituciÃ³n | Tecsup |
+| Institución | Tecsup |
 | Curso | Fullstack con Java |
 | Enfoque | Frontend |
-| Tipo | PrÃ¡ctica acadÃ©mica |
+| Tipo | Práctica académica |
 | Stack | React, Vite y JavaScript |
 
 ## Objetivo
@@ -21,11 +21,11 @@ Practicar consumo de API REST desde React, manejo de estado, formularios control
 - Listar productos desde una API.
 - Registrar productos con formulario.
 - Editar productos existentes.
-- Eliminar productos con confirmaciÃ³n.
+- Eliminar productos con confirmación.
 - Mostrar estados de carga y error.
 - Centralizar llamadas HTTP en `productService.js`.
 
-## ConexiÃ³n con la API
+## Conexión con la API
 
 Crear un archivo `.env.local` a partir de `.env.example`:
 
@@ -33,7 +33,7 @@ Crear un archivo `.env.local` a partir de `.env.example`:
 VITE_API_BASE_URL=http://localhost:8080/api
 ```
 
-## InstalaciÃ³n y ejecuciÃ³n
+## Instalación y ejecución
 
 ```powershell
 npm install
@@ -48,14 +48,14 @@ npm run lint
 npm run preview
 ```
 
-## ValidaciÃ³n local
+## Validación local
 
-Para validar build o lint se requiere instalar dependencias con `npm install`. En la auditorÃ­a actual no se ejecutÃ³ build porque `node_modules` no estaba presente.
+Para validar build o lint se requiere instalar dependencias con `npm install`. En la auditoría actual no se ejecutó build porque `node_modules` no estaba presente.
 
 ## Mejoras futuras
 
 - Mejorar validaciones del formulario.
-- Agregar mensajes visuales de Ã©xito y error.
-- Incorporar bÃºsqueda y filtro por estado.
-- Confirmar integraciÃ³n con el backend definitivo del catÃ¡logo.
-- Agregar pruebas bÃ¡sicas de componentes o flujo principal.
+- Agregar mensajes visuales de éxito y error.
+- Incorporar búsqueda y filtro por estado.
+- Confirmar integración con el backend definitivo del catálogo.
+- Agregar pruebas básicas de componentes o flujo principal.

@@ -2,9 +2,9 @@
 
 Microservicio backend desarrollado con Spring Boot para gestionar pedidos. Forma parte del **Backend Final Exam** de Tecsup junto con `ms-productos`.
 
-## PropÃ³sito
+## Propósito
 
-Permitir el registro, consulta, eliminaciÃ³n y actualizaciÃ³n de estado de pedidos, aplicando validaciones y cÃ¡lculo automÃ¡tico del total.
+Permitir el registro, consulta, eliminación y actualización de estado de pedidos, aplicando validaciones y cálculo automático del total.
 
 ## Arquitectura
 
@@ -36,10 +36,10 @@ DB_PASSWORD=password_local
 PORT=8081
 ```
 
-## ValidaciÃ³n actual
+## Validación actual
 
-El test de contexto falla cuando `${DB_URL}` no se resuelve durante pruebas. Para hacerlo reproducible se recomienda agregar un perfil `test` con H2 o documentar una base PostgreSQL local para validaciÃ³n.
+El test de contexto falla cuando `${DB_URL}` no se resuelve durante pruebas. Para hacerlo reproducible se recomienda agregar un perfil `test` con H2 o documentar una base PostgreSQL local para validación.
 
 ## Estado
 
-Proyecto acadÃ©mico finalizado, con deuda pendiente en configuraciÃ³n de pruebas locales.
+Proyecto académico finalizado, con deuda pendiente en configuración de pruebas locales.

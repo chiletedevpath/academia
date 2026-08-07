@@ -1,58 +1,58 @@
 # SUNAT Consulta
 
-Backend acadÃ©mico desarrollado con Spring Boot para consultar informaciÃ³n de RUC mediante un proveedor externo y registrar historial local de consultas.
+Backend académico desarrollado con Spring Boot para consultar información de RUC mediante un proveedor externo y registrar historial local de consultas.
 
-## Contexto acadÃ©mico
+## Contexto académico
 
 | Dato | Detalle |
 |---|---|
-| InstituciÃ³n | Tecsup |
+| Institución | Tecsup |
 | Curso | Fullstack con Java |
 | Enfoque | Backend |
-| Tipo | Proyecto acadÃ©mico |
+| Tipo | Proyecto académico |
 | Lenguaje | Java 17 |
 | Base local | H2 en memoria |
 
 ## Objetivo
 
-Practicar integraciÃ³n con APIs externas, validaciÃ³n de parÃ¡metros, persistencia con JPA y manejo de errores en un backend Java.
+Practicar integración con APIs externas, validación de parámetros, persistencia con JPA y manejo de errores en un backend Java.
 
 ## Funcionalidades
 
 - Consulta de datos por RUC.
-- ValidaciÃ³n de RUC de 11 dÃ­gitos.
-- IntegraciÃ³n HTTP mediante OpenFeign.
+- Validación de RUC de 11 dígitos.
+- Integración HTTP mediante OpenFeign.
 - Registro de empresas consultadas.
 - Historial de consultas por RUC.
 - Registro de consultas exitosas y fallidas.
 - Manejo de errores del proveedor externo.
-- Base de datos H2 en memoria para prÃ¡ctica local.
+- Base de datos H2 en memoria para práctica local.
 
 ## Endpoints principales
 
-| MÃ©todo | Ruta | Uso |
+| Método | Ruta | Uso |
 |---|---|---|
-| GET | `/api/sunat/ruc/{ruc}` | Consultar informaciÃ³n de una empresa por RUC. |
-| GET | `/api/sunat/ruc/{ruc}/consultas` | Consultar historial de bÃºsquedas de un RUC. |
+| GET | `/api/sunat/ruc/{ruc}` | Consultar información de una empresa por RUC. |
+| GET | `/api/sunat/ruc/{ruc}/consultas` | Consultar historial de búsquedas de un RUC. |
 
-## ConfiguraciÃ³n local
+## Configuración local
 
 ```env
 DECOLECTA_TOKEN=token_local
 ```
 
-## EjecuciÃ³n y validaciÃ³n
+## Ejecución y validación
 
 ```powershell
 .\mvnw.cmd spring-boot:run
 .\mvnw.cmd test
 ```
 
-ValidaciÃ³n actual: los tests se ejecutan correctamente usando H2 en memoria.
+Validación actual: los tests se ejecutan correctamente usando H2 en memoria.
 
 ## Mejoras futuras
 
 - Agregar ejemplos de respuesta JSON.
 - Documentar casos de error del proveedor.
 - Agregar pruebas de controlador y servicio con mocks.
-- Evaluar cachÃ© o control de reintentos para llamadas externas.
+- Evaluar caché o control de reintentos para llamadas externas.
